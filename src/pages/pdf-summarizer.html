@@ -296,7 +296,7 @@
           <!-- Podcast Player Module -->
           <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex justify-content-between align-items-center">
-              <h6 class="m-0 font-weight-bold text-primary">Related Audio Content</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Audio Version for On-the-Go Review</h6>
               <div class="btn-group">
                 <button class="btn btn-sm btn-outline-primary" id="playbackSpeedBtn" data-speed="1">
                   <i class="fas fa-tachometer-alt me-1"></i> 1x
@@ -315,14 +315,23 @@
                   <div>
                     <h6 class="mb-1 podcast-title">BIA-ALCL Outcomes with Chemotherapy and Brentuximab Vedotin</h6>
                     <p class="text-muted mb-0 small">Expert Discussion • 31 MB</p>
+                    <p class="text-muted mb-0 mt-1 small fst-italic">MSLs can listen to paper summaries while commuting or preparing for visits</p>
                   </div>
                 </div>
                 
+                <div class="alert alert-info">
+                  <i class="fas fa-info-circle me-2"></i>
+                  <strong>Audio Paper Reviews:</strong> This feature converts scientific papers into audio summaries, making it easy for MSLs to review literature during commutes or while preparing for HCP visits. The system uses text-to-speech technology and professional narration to create engaging audio content from PDF documents.
+                </div>
+
                 <div class="audio-player mb-3">
                   <audio id="audioElement" class="w-100" controls>
-                    <source src="../../BIA-ALCL Outcomes with Chemotherapy and Brentuximab Vedotin.wav" type="audio/wav">
+                    <source src="#" type="audio/mp3">
                     Your browser does not support the audio element.
                   </audio>
+                  <div class="text-center mt-2">
+                    <span class="badge bg-secondary">Demo Version - Audio content not available</span>
+                  </div>
                 </div>
                 
                 <div class="transcript-container">
@@ -780,27 +789,28 @@
     const saveNotesBtn = document.getElementById('saveNotesBtn');
     const audioNotes = document.getElementById('audioNotes');
     
-    // Playback speed control
+    // Disable the audio element for the demo
+    audioElement.disabled = true;
+    
+    // Add mock player message
+    document.querySelector('.podcast-title').innerHTML = 'BIA-ALCL Outcomes with Chemotherapy and Brentuximab Vedotin <span class="badge bg-secondary ms-2">Mock</span>';
+    document.querySelector('.podcast-title').nextElementSibling.textContent = 'Study Paper as Audio • Mock Player';
+    
+    // Playback speed control - mocked
     playbackSpeedBtn.addEventListener('click', function() {
       const speeds = [1, 1.25, 1.5, 1.75, 2];
       const currentSpeed = parseFloat(this.getAttribute('data-speed'));
       const nextSpeedIndex = (speeds.indexOf(currentSpeed) + 1) % speeds.length;
       const newSpeed = speeds[nextSpeedIndex];
       
-      audioElement.playbackRate = newSpeed;
+      // Just update the button, don't try to change audio playback
       this.setAttribute('data-speed', newSpeed);
       this.innerHTML = `<i class="fas fa-tachometer-alt me-1"></i> ${newSpeed}x`;
     });
     
-    // Download audio
+    // Download audio - mocked
     document.getElementById('downloadAudioBtn').addEventListener('click', function() {
-      const audioSrc = audioElement.querySelector('source').src;
-      const a = document.createElement('a');
-      a.href = audioSrc;
-      a.download = 'BIA-ALCL_Discussion.wav';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+      alert('This is a mock podcast player. In a real implementation, MSLs would be able to download the audio version of the paper.');
     });
     
     // Toggle timestamps
@@ -811,9 +821,31 @@
       });
     });
     
-    // Highlight current key point
-    audioElement.addEventListener('timeupdate', function() {
-      const currentTime = audioElement.currentTime;
+    // Mock the timeupdate function instead of using actual audio playback
+    let mockCurrentTime = 0;
+    let mockPlaying = false;
+    
+    audioElement.addEventListener('play', function() {
+      mockPlaying = true;
+      mockPlayback();
+    });
+    
+    audioElement.addEventListener('pause', function() {
+      mockPlaying = false;
+    });
+    
+    function mockPlayback() {
+      if (!mockPlaying) return;
+      
+      mockCurrentTime += 1;
+      if (mockCurrentTime > 1800) mockCurrentTime = 0; // Reset after 30 minutes
+      
+      updateKeyPoints(mockCurrentTime);
+      
+      setTimeout(mockPlayback, 1000);
+    }
+    
+    function updateKeyPoints(currentTime) {
       const keyPoints = document.querySelectorAll('.key-point');
       
       keyPoints.forEach(point => {
@@ -830,16 +862,21 @@
           point.classList.remove('bg-light');
         }
       });
-    });
+    }
     
     // Save notes functionality
     saveNotesBtn.addEventListener('click', function() {
       const notes = audioNotes.value;
-      const timestamp = audioElement.currentTime;
+      
+      if (!notes.trim()) {
+        alert('Please enter some notes before saving.');
+        return;
+      }
+      
       const savedNotes = JSON.parse(localStorage.getItem('audioNotes') || '[]');
       
       savedNotes.push({
-        timestamp,
+        timestamp: mockCurrentTime,
         text: notes,
         date: new Date().toISOString()
       });
