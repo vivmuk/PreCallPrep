@@ -1,0 +1,255 @@
+<div class="row mb-4">
+  <div class="col-12">
+    <h1 class="h3 mb-4 text-gray-800">HCP Insights</h1>
+    <p class="lead text-muted">Access comprehensive profiles and engage with AI-powered insights about healthcare providers.</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-4 mb-4">
+    <!-- HCP Search and Filter -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Find HCPs</h6>
+      </div>
+      <div class="card-body">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Search HCPs..." id="hcpSearch">
+          <button class="btn btn-primary" type="button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        
+        <div class="mb-3">
+          <label class="form-label small text-muted">Specialty</label>
+          <select class="form-select form-select-sm">
+            <option selected>All Specialties</option>
+            <option>Oncology</option>
+            <option>Hematology</option>
+            <option>Radiology</option>
+            <option>Surgery</option>
+          </select>
+        </div>
+        
+        <div class="mb-3">
+          <label class="form-label small text-muted">Location</label>
+          <select class="form-select form-select-sm">
+            <option selected>All Locations</option>
+            <option>Northeast</option>
+            <option>Midwest</option>
+            <option>South</option>
+            <option>West</option>
+          </select>
+        </div>
+        
+        <div class="mb-3">
+          <label class="form-label small text-muted">Priority</label>
+          <select class="form-select form-select-sm">
+            <option selected>All Priorities</option>
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+          </select>
+        </div>
+        
+        <button class="btn btn-sm btn-primary d-block w-100">Apply Filters</button>
+      </div>
+    </div>
+    
+    <!-- Recent Searches -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Recent HCPs</h6>
+      </div>
+      <div class="card-body p-0">
+        <div class="list-group list-group-flush">
+          <a href="#" class="list-group-item list-group-item-action py-3" data-hcp="sarah-chen">
+            <div class="d-flex w-100 justify-content-between">
+              <h6 class="mb-1">Dr. Sarah Chen</h6>
+              <small class="text-primary">Oncology</small>
+            </div>
+            <small class="text-muted">Memorial Sloan Kettering Cancer Center</small>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action py-3" data-hcp="james-wilson">
+            <div class="d-flex w-100 justify-content-between">
+              <h6 class="mb-1">Dr. James Wilson</h6>
+              <small class="text-primary">Hematology</small>
+            </div>
+            <small class="text-muted">MD Anderson Cancer Center</small>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action py-3" data-hcp="robert-patel">
+            <div class="d-flex w-100 justify-content-between">
+              <h6 class="mb-1">Dr. Robert Patel</h6>
+              <small class="text-primary">Oncology</small>
+            </div>
+            <small class="text-muted">Stanford Medical Center</small>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action py-3" data-hcp="emily-rodriguez">
+            <div class="d-flex w-100 justify-content-between">
+              <h6 class="mb-1">Dr. Emily Rodriguez</h6>
+              <small class="text-primary">Oncology</small>
+            </div>
+            <small class="text-muted">Dana-Farber Cancer Institute</small>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-lg-8">
+    <!-- HCP Profile -->
+    <div class="card shadow mb-4">
+      <div class="card-body p-0">
+        <div class="hcp-profile-header">
+          <div class="container py-3">
+            <div class="row align-items-center">
+              <div class="col-md-2 text-center mb-3 mb-md-0">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Dr. Sarah Chen" class="hcp-avatar">
+              </div>
+              <div class="col-md-10">
+                <h2 class="h3 mb-1">Dr. Sarah Chen</h2>
+                <p class="mb-2 text-muted">Medical Oncologist, MD, PhD</p>
+                <p class="mb-3"><i class="fas fa-hospital me-2"></i> Memorial Sloan Kettering Cancer Center</p>
+                <div>
+                  <span class="tag tag-primary">Breast Cancer</span>
+                  <span class="tag tag-primary">Immunotherapy</span>
+                  <span class="tag tag-primary">Clinical Trials</span>
+                  <span class="tag tag-success">Key Opinion Leader</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="container py-3">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card border-0 mb-4">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <i class="fas fa-user-md me-2 text-primary"></i>
+                    Professional Background
+                  </h5>
+                  <p class="card-text">Dr. Chen is a leading oncologist specializing in breast cancer treatment and research. She has over 15 years of experience in oncology and is actively involved in clinical trials for novel therapeutic approaches.</p>
+                  
+                  <h6 class="mt-4 mb-2">Education</h6>
+                  <ul class="list-unstyled">
+                    <li><i class="fas fa-graduation-cap me-2 text-muted"></i> MD, Harvard Medical School</li>
+                    <li><i class="fas fa-graduation-cap me-2 text-muted"></i> PhD in Cancer Biology, MIT</li>
+                    <li><i class="fas fa-graduation-cap me-2 text-muted"></i> Residency in Internal Medicine, Massachusetts General Hospital</li>
+                    <li><i class="fas fa-graduation-cap me-2 text-muted"></i> Fellowship in Medical Oncology, Memorial Sloan Kettering</li>
+                  </ul>
+                  
+                  <h6 class="mt-4 mb-2">Publications</h6>
+                  <ul class="list-unstyled">
+                    <li><i class="fas fa-file-alt me-2 text-muted"></i> Chen S, et al. (2023). Novel approaches in metastatic breast cancer. <em>Journal of Clinical Oncology</em>.</li>
+                    <li><i class="fas fa-file-alt me-2 text-muted"></i> Wilson J, Chen S, et al. (2022). Immunotherapy combinations in triple-negative breast cancer. <em>Nature Medicine</em>.</li>
+                    <li><i class="fas fa-file-alt me-2 text-muted"></i> Chen S, Thompson M. (2021). Patient outcomes with targeted therapies in HER2+ breast cancer. <em>NEJM</em>.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card border-0 mb-4">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <i class="fas fa-chart-line me-2 text-primary"></i>
+                    Engagement History
+                  </h5>
+                  
+                  <div class="timeline">
+                    <div class="timeline-item">
+                      <div class="timeline-date">Mar 15, 2023</div>
+                      <div class="timeline-title">Virtual Call</div>
+                      <div class="timeline-content">Discussed Phase III trial results for our breast cancer therapy. She was particularly interested in the subgroup analysis for patients with brain metastases.</div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-date">Feb 28, 2023</div>
+                      <div class="timeline-title">Advisory Board</div>
+                      <div class="timeline-content">Participated in our oncology advisory board. Provided valuable feedback on our development pipeline and clinical trial designs.</div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-date">Jan 12, 2023</div>
+                      <div class="timeline-title">Conference Meeting</div>
+                      <div class="timeline-content">Met during ASCO Breast Cancer Symposium. Discussed potential collaboration on a investigator-initiated trial.</div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-date">Nov 5, 2022</div>
+                      <div class="timeline-title">Webinar Presentation</div>
+                      <div class="timeline-content">Presented at our sponsored webinar on advances in breast cancer therapies. Well-received by audience of 150+ oncologists.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="card border-0 mb-4">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <i class="fas fa-sticky-note me-2 text-primary"></i>
+                    Key Insights
+                  </h5>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item px-0">
+                      <i class="fas fa-check-circle me-2 text-success"></i>
+                      Strong interest in novel combination approaches for metastatic breast cancer
+                    </li>
+                    <li class="list-group-item px-0">
+                      <i class="fas fa-check-circle me-2 text-success"></i>
+                      Frequently publishes on immunotherapy in breast cancer
+                    </li>
+                    <li class="list-group-item px-0">
+                      <i class="fas fa-exclamation-circle me-2 text-warning"></i>
+                      Concerned about toxicity profile of our latest compound
+                    </li>
+                    <li class="list-group-item px-0">
+                      <i class="fas fa-check-circle me-2 text-success"></i>
+                      Very patient-focused, emphasizes quality of life measures
+                    </li>
+                    <li class="list-group-item px-0">
+                      <i class="fas fa-info-circle me-2 text-info"></i>
+                      Currently recruiting for a competing trial (Competitor X's drug)
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- AI Chatbot -->
+    <div class="card shadow">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+          <i class="fas fa-robot me-2"></i> AI Insights Assistant
+        </h6>
+      </div>
+      <div class="card-body p-0">
+        <div class="chat-container">
+          <div class="chat-header">
+            <i class="fas fa-comment-dots me-2"></i> Ask questions about Dr. Sarah Chen or any HCP
+          </div>
+          <div class="chat-messages" id="chatMessages">
+            <div class="chat-message chat-message-bot">
+              Hello! I'm your HCP insights assistant. You can ask me questions about Dr. Sarah Chen or any oncology HCP. For example:
+              <ul class="mt-2 mb-0">
+                <li>What are Dr. Chen's research interests?</li>
+                <li>Tell me about recent publications by oncologists at Memorial Sloan Kettering</li>
+                <li>What clinical trials is Dr. Wilson currently leading?</li>
+                <li>Who are the top breast cancer KOLs in the Northeast?</li>
+              </ul>
+            </div>
+          </div>
+          <form id="chatForm" class="chat-input">
+            <input type="text" id="chatInput" placeholder="Ask a question..." class="form-control">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

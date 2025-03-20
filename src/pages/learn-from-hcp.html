@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn from HCP - MSL Precall Planning</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link href="../../css/styles.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Remove InsertChat script -->
+  <style>
+    .chat-iframe-container {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #004C54;
+      border-radius: 0.25rem;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-white" id="sidebar-wrapper">
+    <div class="sidebar-heading">
+      <i class="fas fa-briefcase-medical me-2"></i>MSL PRECALL PLANNING
+    </div>
+    
+    <a href="../../index.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-chart-line"></i>Dashboard
+    </a>
+    
+    <div class="sidebar-heading">PLANNING TOOLS</div>
+    <a href="meeting-objectives.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-bullseye"></i>Meeting Objectives
+    </a>
+    <a href="call-checklist.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-tasks"></i>Call Planning Checklist
+    </a>
+    <a href="next-dialogue.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-comments"></i>Next Best Dialogue
+    </a>
+    
+    <div class="sidebar-heading">INTELLIGENCE TOOLS</div>
+    <a href="learn-from-hcp.html" class="list-group-item list-group-item-action active">
+      <i class="fas fa-user-md"></i>Learn from HCP
+    </a>
+    <a href="competitive-intel.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-chess"></i>Competitive Intelligence
+    </a>
+    <a href="pdf-summarizer.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-file-pdf"></i>PDF Summarizer
+    </a>
+  </div>
+  
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+      <div class="container-fluid">
+        <button class="btn btn-sm" id="sidebarToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell me-1 position-relative">
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    3+
+                    <span class="visually-hidden">unread notifications</span>
+                  </span>
+                </i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">New trial results for Product X</a>
+                <a class="dropdown-item" href="#">Dr. Smith updated preferences</a>
+                <a class="dropdown-item" href="#">Upcoming conference reminder</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">View all notifications</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user-circle me-1"></i> John Wilson
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a>
+                <a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid p-4">
+      <!-- Page heading -->
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <div>
+          <h1 class="h3 mb-0 text-gray-800">Learn from HCP</h1>
+          <p class="lead text-muted">Get AI-powered insights from Healthcare Provider conversations and publications.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h6 class="m-0 font-weight-bold text-primary">HCP Conversation Assistant</h6>
+              <div class="dropdown no-arrow">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                  <div class="dropdown-header">Actions:</div>
+                  <a class="dropdown-item" href="#" id="clearChat"><i class="fas fa-trash-alt fa-sm fa-fw me-2 text-gray-400"></i>Clear Chat</a>
+                  <a class="dropdown-item" href="#" id="exportChat"><i class="fas fa-download fa-sm fa-fw me-2 text-gray-400"></i>Export Conversation</a>
+                  <a class="dropdown-item" href="#" id="saveChat"><i class="fas fa-save fa-sm fa-fw me-2 text-gray-400"></i>Save to Library</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <div class="chat-iframe-container">
+                <iframe
+                  allowfullscreen
+                  title="AI Agent"
+                  role="dialog"
+                  id="ICG-iframe"
+                  allow="accelerometer; autoplay; camera; display-capture; encrypted-media; fullscreen; gamepad; geolocation; gyroscope; hid; identity-credentials-get; idle-detection; local-fonts; magnetometer; microphone; midi; otp-credentials; payment; picture-in-picture; publickey-credentials-get; screen-wake-lock; serial; storage-access; usb; window-management; xr-spatial-tracking"
+                  sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin allow-scripts allow-top-navigation allow-top-navigation-by-user-activation"
+                  src="https://app.insertchat.com/embed/a6865193-1f23-45f3-8505-be32288d60ea"
+                  style="display: block; border: 0; overflow: hidden; height: 100%; width: 100%; background-color: #fff;">
+                </iframe>
+              </div>
+            </div>
+            <div class="card-footer py-3 d-flex align-items-center justify-content-between bg-light">
+              <div class="small text-muted">Powered by <a href="https://insrt.chat" target="_blank">InsrtChat</a></div>
+              <button class="btn btn-sm btn-primary" id="saveInsightsBtn">
+                <i class="fas fa-lightbulb me-1"></i> Save Insights
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-3">
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Suggested Topics</h6>
+            </div>
+            <div class="card-body">
+              <div class="mb-3">
+                <h6 class="font-weight-bold mb-2">Clinical Questions</h6>
+                <div class="d-grid gap-2">
+                  <button class="btn btn-sm btn-outline-primary text-start" data-topic="What are the latest advances in treating HER2+ breast cancer with brain metastases?">
+                    <i class="fas fa-comment-medical me-1"></i> Brain metastases treatment
+                  </button>
+                  <button class="btn btn-sm btn-outline-primary text-start" data-topic="How does Drug X compare to the standard of care in terms of cardiac safety profile?">
+                    <i class="fas fa-comment-medical me-1"></i> Cardiac safety comparison
+                  </button>
+                  <button class="btn btn-sm btn-outline-primary text-start" data-topic="What biomarkers are most predictive of response to Drug X in clinical practice?">
+                    <i class="fas fa-comment-medical me-1"></i> Biomarker utility
+                  </button>
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <h6 class="font-weight-bold mb-2">Research Collaboration</h6>
+                <div class="d-grid gap-2">
+                  <button class="btn btn-sm btn-outline-primary text-start" data-topic="What are the criteria for investigator-initiated trials with Drug X?">
+                    <i class="fas fa-comment-medical me-1"></i> IIT criteria
+                  </button>
+                  <button class="btn btn-sm btn-outline-primary text-start" data-topic="How can we collaborate on a real-world evidence study for Drug X?">
+                    <i class="fas fa-comment-medical me-1"></i> RWE collaboration
+                  </button>
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <h6 class="font-weight-bold mb-2">Patient Management</h6>
+                <div class="d-grid gap-2">
+                  <button class="btn btn-sm btn-outline-primary text-start" data-topic="What is your approach to managing the common adverse events associated with Drug X?">
+                    <i class="fas fa-comment-medical me-1"></i> AE management
+                  </button>
+                  <button class="btn btn-sm btn-outline-primary text-start" data-topic="How do you select patients most likely to benefit from Drug X in your practice?">
+                    <i class="fas fa-comment-medical me-1"></i> Patient selection
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Saved Insights</h6>
+            </div>
+            <div class="card-body p-0">
+              <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action py-3">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">Brain Metastases Management</h6>
+                    <small class="text-muted">2 days ago</small>
+                  </div>
+                  <small class="text-muted">From: Dr. Sarah Chen</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action py-3">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">Biomarker Testing Protocol</h6>
+                    <small class="text-muted">Last week</small>
+                  </div>
+                  <small class="text-muted">From: Dr. James Wilson</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action py-3">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">Real-world Evidence Study Design</h6>
+                    <small class="text-muted">2 weeks ago</small>
+                  </div>
+                  <small class="text-muted">From: Dr. Emily Rodriguez</small>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Insight Capture Modal -->
+      <div class="modal fade" id="insightModal" tabindex="-1" aria-labelledby="insightModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="insightModalLabel">Save Insights from Conversation</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="insightForm">
+                <div class="mb-3">
+                  <label for="insightTitle" class="form-label">Insight Title</label>
+                  <input type="text" class="form-control" id="insightTitle" placeholder="E.g., Brain Metastases Management Approach">
+                </div>
+                <div class="mb-3">
+                  <label for="insightHCP" class="form-label">Associated HCP</label>
+                  <select class="form-select" id="insightHCP">
+                    <option selected value="none">Select HCP...</option>
+                    <option value="sarah-chen">Dr. Sarah Chen</option>
+                    <option value="james-wilson">Dr. James Wilson</option>
+                    <option value="emily-rodriguez">Dr. Emily Rodriguez</option>
+                    <option value="robert-patel">Dr. Robert Patel</option>
+                    <option value="custom">Other (Custom)</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="insightCategory" class="form-label">Category</label>
+                  <select class="form-select" id="insightCategory">
+                    <option selected value="clinical">Clinical</option>
+                    <option value="research">Research</option>
+                    <option value="patient-management">Patient Management</option>
+                    <option value="market-access">Market Access</option>
+                    <option value="competitive">Competitive Intelligence</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="insightNotes" class="form-label">Key Insights</label>
+                  <textarea class="form-control" id="insightNotes" rows="4" placeholder="Enter the key insights from your conversation..."></textarea>
+                </div>
+                <div class="form-check mb-3">
+                  <input class="form-check-input" type="checkbox" id="followupNeeded">
+                  <label class="form-check-label" for="followupNeeded">
+                    Follow-up action needed
+                  </label>
+                </div>
+                <div class="mb-3 followup-details d-none">
+                  <label for="followupAction" class="form-label">Follow-up Action</label>
+                  <input type="text" class="form-control" id="followupAction" placeholder="E.g., Send latest brain metastases data">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" id="saveInsightBtn">Save Insight</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Toggle the side navigation
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.body.classList.toggle('sb-sidenav-toggled');
+      });
+    }
+    
+    // Get references to DOM elements
+    const topicButtons = document.querySelectorAll('[data-topic]');
+    const saveInsightsBtn = document.getElementById('saveInsightsBtn');
+    const clearChatBtn = document.getElementById('clearChat');
+    const exportChatBtn = document.getElementById('exportChat');
+    const saveChatBtn = document.getElementById('saveChat');
+    const followupNeeded = document.getElementById('followupNeeded');
+    const followupDetails = document.querySelector('.followup-details');
+    const saveInsightBtn = document.getElementById('saveInsightBtn');
+    
+    // Topic suggestion buttons
+    if (topicButtons) {
+      topicButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const topic = this.dataset.topic;
+          const chatIframe = document.querySelector('iframe');
+          
+          // In a real implementation, you would communicate with the iframe using postMessage
+          // For this demo, we'll just alert the topic
+          alert(`In a real implementation, this would insert "${topic}" into the chat.`);
+        });
+      });
+    }
+    
+    // Toggle follow-up details based on checkbox
+    if (followupNeeded) {
+      followupNeeded.addEventListener('change', function() {
+        if (this.checked) {
+          followupDetails.classList.remove('d-none');
+        } else {
+          followupDetails.classList.add('d-none');
+        }
+      });
+    }
+    
+    // Save insights button
+    if (saveInsightsBtn) {
+      saveInsightsBtn.addEventListener('click', function() {
+        const insightModal = new bootstrap.Modal(document.getElementById('insightModal'));
+        insightModal.show();
+      });
+    }
+    
+    // Save insight from modal
+    if (saveInsightBtn) {
+      saveInsightBtn.addEventListener('click', function() {
+        const title = document.getElementById('insightTitle').value;
+        const hcp = document.getElementById('insightHCP').value;
+        
+        if (!title || hcp === 'none') {
+          alert('Please enter a title and select an HCP.');
+          return;
+        }
+        
+        // In a real app, this would save to database
+        alert('Insight saved successfully!');
+        
+        // Close modal
+        const insightModal = bootstrap.Modal.getInstance(document.getElementById('insightModal'));
+        insightModal.hide();
+        
+        // Reset form
+        document.getElementById('insightForm').reset();
+      });
+    }
+    
+    // Clear chat
+    if (clearChatBtn) {
+      clearChatBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        if (confirm('Are you sure you want to clear the chat? This cannot be undone.')) {
+          // In a real implementation, you would communicate with the iframe using postMessage
+          alert('Chat cleared!');
+        }
+      });
+    }
+    
+    // Export chat
+    if (exportChatBtn) {
+      exportChatBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // In a real implementation, you would communicate with the iframe using postMessage
+        alert('In a real implementation, this would export the chat to a PDF or text file.');
+      });
+    }
+    
+    // Save chat
+    if (saveChatBtn) {
+      saveChatBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // In a real implementation, you would communicate with the iframe using postMessage
+        alert('In a real implementation, this would save the chat to your library.');
+      });
+    }
+  });
+</script>
+</body>
+</html> 

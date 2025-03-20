@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meeting Objectives & Agenda - MSL Precall Planning</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link href="../../css/styles.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-white" id="sidebar-wrapper">
+    <div class="sidebar-heading">
+      <i class="fas fa-briefcase-medical me-2"></i>MSL PRECALL PLANNING
+    </div>
+    
+    <a href="../../index.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-chart-line"></i>Dashboard
+    </a>
+    
+    <div class="sidebar-heading">PLANNING TOOLS</div>
+    <a href="meeting-objectives.html" class="list-group-item list-group-item-action active">
+      <i class="fas fa-bullseye"></i>Meeting Objectives
+    </a>
+    <a href="call-checklist.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-tasks"></i>Call Planning Checklist
+    </a>
+    <a href="next-dialogue.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-comments"></i>Next Best Dialogue
+    </a>
+    
+    <div class="sidebar-heading">INTELLIGENCE TOOLS</div>
+    <a href="learn-from-hcp.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-user-md"></i>Learn from HCP
+    </a>
+    <a href="competitive-intel.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-chess"></i>Competitive Intelligence
+    </a>
+    <a href="pdf-summarizer.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-file-pdf"></i>PDF Summarizer
+    </a>
+  </div>
+  
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+      <div class="container-fluid">
+        <button class="btn btn-sm" id="sidebarToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell me-1 position-relative">
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    3+
+                    <span class="visually-hidden">unread notifications</span>
+                  </span>
+                </i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">New trial results for Product X</a>
+                <a class="dropdown-item" href="#">Dr. Smith updated preferences</a>
+                <a class="dropdown-item" href="#">Upcoming conference reminder</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">View all notifications</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user-circle me-1"></i> John Wilson
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a>
+                <a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid p-4">
+      <!-- Page heading -->
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <div>
+          <h1 class="h3 mb-0 text-gray-800">Meeting Objectives & Agenda</h1>
+          <p class="lead text-muted">Define clear objectives and structure your HCP interactions for maximum impact.</p>
+        </div>
+        <div>
+          <div class="btn-group">
+            <button class="btn btn-sm btn-outline-primary">
+              <i class="fas fa-edit fa-sm text-gray-50 me-1"></i> Edit
+            </button>
+            <button class="btn btn-sm btn-outline-primary">
+              <i class="fas fa-share-alt fa-sm text-gray-50 me-1"></i> Share
+            </button>
+            <button class="btn btn-sm btn-outline-primary">
+              <i class="fas fa-print fa-sm text-gray-50 me-1"></i> Print
+            </button>
+            <button class="btn btn-sm btn-outline-danger">
+              <i class="fas fa-trash-alt fa-sm text-gray-50 me-1"></i> Delete
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Left Column -->
+        <div class="col-xl-4 col-lg-5 mb-4">
+          <!-- HCP Card -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+              <h6 class="m-0 font-weight-bold text-primary">HCP Meeting</h6>
+              <div class="dropdown">
+                <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="meetingDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-cog"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="meetingDropdown">
+                  <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Edit</a></li>
+                  <li><a class="dropdown-item" href="#"><i class="fas fa-share-alt me-2"></i>Share</a></li>
+                  <li><a class="dropdown-item" href="#"><i class="fas fa-print me-2"></i>Print</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash-alt me-2"></i>Delete</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-3">
+                <div class="avatar-circle bg-primary text-white me-3" style="width: 60px; height: 60px; font-size: 1.5rem;">SC</div>
+                <div>
+                  <h6 class="mb-1">Dr. Sarah Chen</h6>
+                  <p class="mb-0 text-muted small">Memorial Sloan Kettering Cancer Center</p>
+                  <div class="text-primary small"><i class="far fa-calendar-alt me-1"></i> April 12, 2023 • 2:00 PM</div>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <label for="meetingType" class="form-label small text-muted mb-1">Meeting Type</label>
+                <select class="form-select form-select-sm" id="meetingType">
+                  <option value="virtual-data">Virtual Data Review</option>
+                  <option value="in-person">In-Person Meeting</option>
+                  <option value="roundtable">Roundtable Discussion</option>
+                  <option value="conference">Conference Follow-up</option>
+                  <option value="advisory">Advisory Board</option>
+                </select>
+              </div>
+              
+              <div class="mb-4">
+                <label class="form-label small text-muted mb-1">Time Allocation</label>
+                <div class="progress time-allocation-progress mb-3">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40% Clinical Data</div>
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30% Discussion</div>
+                  <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20% Q&A</div>
+                  <div class="progress-bar bg-warning" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10% Follow-up</div>
+                </div>
+                <div class="small text-muted text-center">60-minute meeting</div>
+              </div>
+              
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <label class="form-label small text-muted mb-0">Materials Needed</label>
+                  <button class="btn btn-sm btn-link text-primary p-0" data-bs-toggle="modal" data-bs-target="#addMaterialModal">
+                    <i class="fas fa-plus-circle"></i>
+                  </button>
+                </div>
+                <div class="list-group list-group-flush materials-list small">
+                  <div class="list-group-item px-0 py-2 d-flex align-items-center">
+                    <i class="fas fa-file-powerpoint text-danger me-2"></i> Phase III Trial Slide Deck
+                  </div>
+                  <div class="list-group-item px-0 py-2 d-flex align-items-center">
+                    <i class="fas fa-file-pdf text-danger me-2"></i> Patient Subgroup Analysis
+                  </div>
+                  <div class="list-group-item px-0 py-2 d-flex align-items-center">
+                    <i class="fas fa-file-alt text-primary me-2"></i> Safety Data Summary
+                  </div>
+                  <div class="list-group-item px-0 py-2 d-flex align-items-center">
+                    <i class="fas fa-file-image text-success me-2"></i> Mechanism of Action Visual
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Success Metrics Card -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+              <h6 class="m-0 font-weight-bold text-primary">Success Metrics</h6>
+              <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addMetricModal">
+                <i class="fas fa-plus me-1"></i> Add Metric
+              </button>
+            </div>
+            <div class="card-body">
+              <p class="small text-muted mb-3">How will you measure the success of this meeting?</p>
+              
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="metric1" checked>
+                <label class="form-check-label" for="metric1">
+                  HCP expresses interest in prescribing for eligible patients
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="metric2" checked>
+                <label class="form-check-label" for="metric2">
+                  HCP requests additional scientific information
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="metric3">
+                <label class="form-check-label" for="metric3">
+                  HCP expresses interest in IIT collaboration
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="metric4" checked>
+                <label class="form-check-label" for="metric4">
+                  HCP agrees to follow-up meeting
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="metric5">
+                <label class="form-check-label" for="metric5">
+                  HCP shares feedback on clinical data
+                </label>
+              </div>
+              
+              <div class="progress success-metrics-progress mt-3">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="small text-muted text-end mt-1">3 of 5 metrics defined</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right Column -->
+        <div class="col-xl-8 col-lg-7">
+          <!-- Meeting Objectives Card -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+              <h6 class="m-0 font-weight-bold text-primary">Meeting Objectives</h6>
+              <button class="btn btn-sm btn-outline-primary" id="addObjectiveBtn">
+                <i class="fas fa-plus me-1"></i> Add Objective
+              </button>
+            </div>
+            <div class="card-body">
+              <p class="text-muted mb-4">Define clear, specific, and measurable objectives for your meeting with Dr. Chen.</p>
+              
+              <div class="objectives-list">
+                <div class="objective-card mb-3 p-3 border rounded">
+                  <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h6 class="mb-0">
+                      <span class="badge bg-primary me-2">Primary</span> Share new Phase III clinical trial data
+                    </h6>
+                    <div>
+                      <button class="btn btn-sm btn-link text-primary p-0 me-2"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-sm btn-link text-danger p-0"><i class="fas fa-times"></i></button>
+                    </div>
+                  </div>
+                  <p class="mb-2">Share new Phase III clinical trial data focusing on efficacy in patients with brain metastases</p>
+                  <div class="small text-muted"><i class="fas fa-info-circle me-1"></i> This aligns with Dr. Chen's research interests and patient population</div>
+                </div>
+                
+                <div class="objective-card mb-3 p-3 border rounded">
+                  <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h6 class="mb-0">
+                      <span class="badge bg-success me-2">Secondary</span> Address safety concerns
+                    </h6>
+                    <div>
+                      <button class="btn btn-sm btn-link text-primary p-0 me-2"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-sm btn-link text-danger p-0"><i class="fas fa-times"></i></button>
+                    </div>
+                  </div>
+                  <p class="mb-2">Address safety concerns regarding cardiac monitoring requirements based on new long-term data</p>
+                  <div class="small text-muted"><i class="fas fa-info-circle me-1"></i> Dr. Chen previously expressed concerns about this aspect</div>
+                </div>
+                
+                <div class="objective-card mb-3 p-3 border rounded">
+                  <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h6 class="mb-0">
+                      <span class="badge bg-info me-2">Secondary</span> Explore IIT collaboration
+                    </h6>
+                    <div>
+                      <button class="btn btn-sm btn-link text-primary p-0 me-2"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-sm btn-link text-danger p-0"><i class="fas fa-times"></i></button>
+                    </div>
+                  </div>
+                  <p class="mb-2">Explore interest in potential investigator-initiated trial collaboration</p>
+                  <div class="small text-muted"><i class="fas fa-info-circle me-1"></i> Align with MSKCC's research priorities in combination approaches</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Meeting Agenda Card -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+              <h6 class="m-0 font-weight-bold text-primary">Meeting Agenda</h6>
+              <button class="btn btn-sm btn-outline-primary" id="addAgendaItemBtn">
+                <i class="fas fa-plus me-1"></i> Add Item
+              </button>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover agenda-table">
+                  <thead>
+                    <tr>
+                      <th style="width:15%">Time</th>
+                      <th style="width:25%">Topic</th>
+                      <th style="width:45%">Details</th>
+                      <th style="width:15%">Lead</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="agenda-item">
+                      <td>
+                        <input type="text" class="form-control form-control-sm agenda-time" value="2:00 - 2:05">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control form-control-sm agenda-topic" value="Introduction">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control form-control-sm" value="Welcome, confirm agenda, brief catch-up on recent developments">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control form-control-sm agenda-owner" value="John (MSL)">
+                      </td>
+                    </tr>
+                    <tr class="agenda-item">
+                      <td>
+                        <input type="text" class="form-control form-control-sm agenda-time" value="2:05 - 2:25">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control form-control-sm agenda-topic" value="Phase III Clinical Data">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control form-control-sm" value="Present efficacy data with focus on brain metastases subgroup analysis">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control form-control-sm agenda-owner" value="John (MSL)">
+                      </td>
+                    </tr>
+                    <tr class="agenda-item">
+                      <td>
+                        <input type="text" class="form-control form-control-sm agenda-time" value="2:25 - 2:40">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control form-control-sm agenda-topic" value="Safety Profile Update">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control form-control-sm" value="Long-term safety data and cardiac monitoring recommendations">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control form-control-sm agenda-owner" value="John (MSL)">
+                      </td>
+                    </tr>
+                    <tr class="agenda-item">
+                      <td>
+                        <input type="text" class="form-control form-control-sm agenda-time" value="2:40 - 2:50">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control form-control-sm agenda-topic" value="IIT Opportunity">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control form-control-sm" value="Explore potential collaboration on combination therapy study">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control form-control-sm agenda-owner" value="John (MSL)">
+                      </td>
+                    </tr>
+                    <tr class="agenda-item">
+                      <td>
+                        <input type="text" class="form-control form-control-sm agenda-time" value="2:50 - 3:00">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control form-control-sm agenda-topic" value="Q&A and Next Steps">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control form-control-sm" value="Address questions, document action items, plan follow-up">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control form-control-sm agenda-owner" value="Both">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <div class="alert alert-info mt-3 mb-0">
+                <i class="fas fa-info-circle me-2"></i> <strong>Tip:</strong> Be flexible with your agenda. If Dr. Chen shows particular interest in a specific topic, be prepared to adjust time allocations.
+              </div>
+            </div>
+          </div>
+          
+          <!-- Key Discussion Points Card -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+              <h6 class="m-0 font-weight-bold text-primary">Key Discussion Points</h6>
+              <button class="btn btn-sm btn-outline-primary" id="addDiscussionPointBtn">
+                <i class="fas fa-plus me-1"></i> Add Section
+              </button>
+            </div>
+            <div class="card-body">
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <div class="card h-100 border-left-primary shadow-sm discussion-point-card">
+                    <div class="card-body">
+                      <h6 class="card-title"><i class="fas fa-chart-line text-primary me-2"></i>Efficacy Data</h6>
+                      <ul class="small mb-0">
+                        <li>43% reduction in risk of progression in overall population (HR 0.57)</li>
+                        <li>Significant benefit in brain metastases subgroup (HR 0.42)</li>
+                        <li>Median PFS of 12.4 months vs 8.1 months for placebo</li>
+                        <li>Overall response rate of 47% vs 31% for placebo</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card h-100 border-left-success shadow-sm discussion-point-card">
+                    <div class="card-body">
+                      <h6 class="card-title"><i class="fas fa-shield-alt text-success me-2"></i>Safety Profile</h6>
+                      <ul class="small mb-0">
+                        <li>Updated cardiac monitoring requirements (now at baseline and 3 months)</li>
+                        <li>Grade 3-4 AEs in 35% of patients vs 28% for placebo</li>
+                        <li>Most common AEs: nausea (32%), fatigue (28%), neutropenia (22%)</li>
+                        <li>Discontinuation rate of 7% vs 5% for placebo</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <div class="card h-100 border-left-info shadow-sm discussion-point-card">
+                    <div class="card-body">
+                      <h6 class="card-title"><i class="fas fa-users text-info me-2"></i>Patient Selection</h6>
+                      <ul class="small mb-0">
+                        <li>Biomarker status and correlation with outcomes</li>
+                        <li>Role of prior treatments in response prediction</li>
+                        <li>Special populations (elderly, organ dysfunction, etc.)</li>
+                        <li>Optimal sequencing with other therapies</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card h-100 border-left-warning shadow-sm discussion-point-card">
+                    <div class="card-body">
+                      <h6 class="card-title"><i class="fas fa-flask text-warning me-2"></i>Research Collaboration</h6>
+                      <ul class="small mb-0">
+                        <li>Potential combination with immunotherapy agents</li>
+                        <li>Investigator-initiated trial options and support</li>
+                        <li>Available funding and research grants</li>
+                        <li>Publication opportunities and data sharing</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Save Button Card -->
+          <div class="card shadow">
+            <div class="card-body d-flex justify-content-between align-items-center">
+              <div id="alertContainer"></div>
+              <button class="btn btn-primary" id="saveObjectivesBtn">
+                <i class="fas fa-save me-2"></i> Save Objectives & Agenda
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Metric Modal -->
+<div class="modal fade" id="addMetricModal" tabindex="-1" aria-labelledby="addMetricModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addMetricModalLabel">Add Custom Success Metric</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="metricDescription" class="form-label">Metric Description</label>
+          <input type="text" class="form-control" id="metricDescription" placeholder="e.g., HCP agrees to participate in speaker program">
+        </div>
+        <div class="mb-3">
+          <label for="metricCategory" class="form-label">Category</label>
+          <select class="form-select" id="metricCategory">
+            <option value="clinical">Clinical Education</option>
+            <option value="research">Research Collaboration</option>
+            <option value="relationship">Relationship Building</option>
+            <option value="feedback">Product Feedback</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Add Metric</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Material Modal -->
+<div class="modal fade" id="addMaterialModal" tabindex="-1" aria-labelledby="addMaterialModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addMaterialModalLabel">Add Meeting Material</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="materialName" class="form-label">Material Name</label>
+          <input type="text" class="form-control" id="materialName" placeholder="e.g., Phase III Clinical Study Report">
+        </div>
+        <div class="mb-3">
+          <label for="materialType" class="form-label">Material Type</label>
+          <select class="form-select" id="materialType">
+            <option value="slides">Presentation Slides</option>
+            <option value="pdf">PDF Document</option>
+            <option value="image">Image/Visual</option>
+            <option value="video">Video</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="materialUpload" class="form-label">Upload File (Optional)</label>
+          <input class="form-control" type="file" id="materialUpload">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Add Material</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Toggle the side navigation
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.body.classList.toggle('sb-sidenav-toggled');
+      });
+    }
+    
+    // Save objectives button
+    const saveObjectivesBtn = document.getElementById('saveObjectivesBtn');
+    
+    if (saveObjectivesBtn) {
+      saveObjectivesBtn.addEventListener('click', function() {
+        // Collect form data
+        const meetingType = document.getElementById('meetingType').value;
+        const objectives = document.querySelectorAll('.objective-card');
+        const agendaItems = document.querySelectorAll('.agenda-item');
+        
+        // In a real app, this would save to database
+        console.log('Meeting objectives saved:', {
+          type: meetingType,
+          objectives: objectives.length,
+          agenda: agendaItems.length
+        });
+        
+        // Show success alert
+        const alertContainer = document.getElementById('alertContainer');
+        if (alertContainer) {
+          alertContainer.innerHTML = `
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="fas fa-check-circle me-2"></i> Meeting objectives and agenda saved successfully!
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          `;
+        }
+      });
+    }
+    
+    // Add Objective Button
+    const addObjectiveBtn = document.getElementById('addObjectiveBtn');
+    if (addObjectiveBtn) {
+      addObjectiveBtn.addEventListener('click', function() {
+        const objectivesList = document.querySelector('.objectives-list');
+        if (objectivesList) {
+          const newObjective = document.createElement('div');
+          newObjective.className = 'objective-card mb-3 p-3 border rounded';
+          newObjective.innerHTML = `
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <h6 class="mb-0">
+                <span class="badge bg-secondary me-2">New</span> 
+                <input type="text" class="form-control form-control-sm d-inline-block w-auto" placeholder="Objective title">
+              </h6>
+              <div>
+                <button class="btn btn-sm btn-link text-primary p-0 me-2"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-sm btn-link text-danger p-0"><i class="fas fa-times"></i></button>
+              </div>
+            </div>
+            <textarea class="form-control form-control-sm mb-2" rows="2" placeholder="Describe your objective here..."></textarea>
+            <div class="small text-muted"><i class="fas fa-info-circle me-1"></i> Add context or notes about this objective</div>
+          `;
+          objectivesList.appendChild(newObjective);
+        }
+      });
+    }
+    
+    // Add Agenda Item Button
+    const addAgendaItemBtn = document.getElementById('addAgendaItemBtn');
+    if (addAgendaItemBtn) {
+      addAgendaItemBtn.addEventListener('click', function() {
+        const agendaTable = document.querySelector('.table tbody');
+        if (agendaTable) {
+          const newRow = document.createElement('tr');
+          newRow.className = 'agenda-item';
+          newRow.innerHTML = `
+            <td>
+              <input type="text" class="form-control form-control-sm agenda-time" placeholder="Time">
+            </td>
+            <td>
+              <input type="text" class="form-control form-control-sm agenda-topic" placeholder="Topic">
+            </td>
+            <td>
+              <input type="text" class="form-control form-control-sm" placeholder="Details">
+            </td>
+            <td>
+              <input type="text" class="form-control form-control-sm agenda-owner" placeholder="Lead">
+            </td>
+          `;
+          agendaTable.appendChild(newRow);
+        }
+      });
+    }
+  });
+</script>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Toggle the side navigation
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.body.classList.toggle('sb-sidenav-toggled');
+      });
+    }
+    
+    // ... existing script code ...
+  });
+</script>
+</body>
+</html> 

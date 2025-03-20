@@ -1,0 +1,287 @@
+<div class="row mb-4">
+  <div class="col-12">
+    <h1 class="h3 mb-4 text-gray-800">Dashboard</h1>
+    <p class="lead text-muted">Welcome back, John. You have 12 upcoming HCP interactions this month.</p>
+  </div>
+</div>
+
+<div class="row">
+  <!-- Stats -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+              Upcoming Calls
+            </div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">12</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+              Recent Activities
+            </div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+              Call Preparation
+            </div>
+            <div class="row no-gutters align-items-center">
+              <div class="col-auto">
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">75%</div>
+              </div>
+              <div class="col">
+                <div class="progress progress-sm mr-2">
+                  <div class="progress-bar bg-info" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-clipboard-check fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+              Pending Follow-ups
+            </div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-comments fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <!-- Upcoming Calls Chart -->
+  <div class="col-lg-6 mb-4">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Upcoming Calls This Week</h6>
+      </div>
+      <div class="card-body">
+        <div class="chart-area">
+          <canvas id="upcomingCallsChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Engagement Type Chart -->
+  <div class="col-lg-6 mb-4">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Engagement Types</h6>
+      </div>
+      <div class="card-body">
+        <div class="chart-pie pt-4 pb-2">
+          <canvas id="engagementTypeChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <!-- Priority HCPs -->
+  <div class="col-lg-6 mb-4">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Priority HCPs</h6>
+      </div>
+      <div class="card-body">
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#hcpModal">
+            <div class="d-flex w-100 justify-content-between align-items-center">
+              <div>
+                <h6 class="mb-1">Dr. Sarah Chen</h6>
+                <small class="text-muted">Oncologist, Memorial Sloan Kettering Cancer Center</small>
+              </div>
+              <span class="badge bg-primary rounded-pill">High</span>
+            </div>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between align-items-center">
+              <div>
+                <h6 class="mb-1">Dr. James Wilson</h6>
+                <small class="text-muted">Hematologist, MD Anderson Cancer Center</small>
+              </div>
+              <span class="badge bg-primary rounded-pill">High</span>
+            </div>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between align-items-center">
+              <div>
+                <h6 class="mb-1">Dr. Emily Rodriguez</h6>
+                <small class="text-muted">Oncologist, Dana-Farber Cancer Institute</small>
+              </div>
+              <span class="badge bg-info rounded-pill">Medium</span>
+            </div>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between align-items-center">
+              <div>
+                <h6 class="mb-1">Dr. Michael Thompson</h6>
+                <small class="text-muted">Oncologist, Mayo Clinic</small>
+              </div>
+              <span class="badge bg-info rounded-pill">Medium</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Activities -->
+  <div class="col-lg-6 mb-4">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Recent Activities</h6>
+      </div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">Yesterday</div>
+            <div class="timeline-title">Call with Dr. Sarah Chen</div>
+            <div class="timeline-content">Discussed latest clinical trial results for our oncology drug. She requested follow-up data on patient outcomes.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2 days ago</div>
+            <div class="timeline-title">Virtual Advisory Board</div>
+            <div class="timeline-content">Participated in virtual advisory board with 5 key opinion leaders in breast cancer treatment.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">3 days ago</div>
+            <div class="timeline-title">PDF Summary Prepared</div>
+            <div class="timeline-content">Created summary of latest Phase III trial for upcoming meeting with Dr. Wilson.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Last week</div>
+            <div class="timeline-title">Conference Attendance</div>
+            <div class="timeline-content">Attended the International Cancer Research Symposium and connected with 12 key oncologists.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HCP Details Modal -->
+<div class="modal fade" id="hcpModal" tabindex="-1" aria-labelledby="hcpModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="hcpModalLabel">Dr. Sarah Chen</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row mb-4">
+          <div class="col-md-4 text-center">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle img-fluid mb-3" style="max-width: 150px;">
+            <h5>Dr. Sarah Chen</h5>
+            <p class="text-muted">Medical Oncologist</p>
+            <p class="text-muted">Memorial Sloan Kettering Cancer Center</p>
+          </div>
+          <div class="col-md-8">
+            <h6 class="mb-3">Areas of Interest</h6>
+            <div class="mb-3">
+              <span class="badge bg-primary me-1">Breast Cancer</span>
+              <span class="badge bg-primary me-1">Immunotherapy</span>
+              <span class="badge bg-primary me-1">Clinical Trials</span>
+              <span class="badge bg-primary me-1">Targeted Therapy</span>
+            </div>
+            
+            <h6 class="mb-3">Recent Engagements</h6>
+            <ul class="list-group list-group-flush small mb-3">
+              <li class="list-group-item px-0">
+                <i class="fas fa-phone-alt me-2 text-primary"></i> 
+                Call on Mar 15, 2023 (Discussed: Phase III trial results)
+              </li>
+              <li class="list-group-item px-0">
+                <i class="fas fa-users me-2 text-primary"></i> 
+                Advisory Board on Feb 28, 2023
+              </li>
+              <li class="list-group-item px-0">
+                <i class="fas fa-comment me-2 text-primary"></i> 
+                Email follow-up on Feb 10, 2023
+              </li>
+            </ul>
+            
+            <h6 class="mb-3">Notes</h6>
+            <p class="small">Dr. Chen has expressed interest in our upcoming clinical trials for metastatic breast cancer. She is particularly interested in the efficacy data compared to the current standard of care.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <h6 class="mb-3">Upcoming Engagements</h6>
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Topic</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Apr 5, 2023</td>
+                  <td>Virtual Call</td>
+                  <td>Phase III Trial Results Follow-up</td>
+                  <td><span class="badge bg-warning">Preparation in Progress</span></td>
+                </tr>
+                <tr>
+                  <td>May 12, 2023</td>
+                  <td>Conference Meeting</td>
+                  <td>New Research Presentation</td>
+                  <td><span class="badge bg-secondary">Scheduled</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Prepare for Call</button>
+      </div>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Summarizer - MSL Precall Planning</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Google Fonts with preconnect and crossorigin -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link href="../../css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-white" id="sidebar-wrapper">
+    <div class="sidebar-heading">
+      <i class="fas fa-briefcase-medical me-2"></i>MSL PRECALL PLANNING
+    </div>
+    
+    <a href="../../index.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-chart-line"></i>Dashboard
+    </a>
+    
+    <div class="sidebar-heading">PLANNING TOOLS</div>
+    <a href="meeting-objectives.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-bullseye"></i>Meeting Objectives
+    </a>
+    <a href="call-checklist.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-tasks"></i>Call Planning Checklist
+    </a>
+    <a href="next-dialogue.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-comments"></i>Next Best Dialogue
+    </a>
+    
+    <div class="sidebar-heading">INTELLIGENCE TOOLS</div>
+    <a href="learn-from-hcp.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-user-md"></i>Learn from HCP
+    </a>
+    <a href="competitive-intel.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-chess"></i>Competitive Intelligence
+    </a>
+    <a href="pdf-summarizer.html" class="list-group-item list-group-item-action active">
+      <i class="fas fa-file-pdf"></i>PDF Summarizer
+    </a>
+  </div>
+  
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+      <div class="container-fluid">
+        <button class="btn btn-sm" id="sidebarToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell me-1 position-relative">
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    3+
+                    <span class="visually-hidden">unread notifications</span>
+                  </span>
+                </i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">New trial results for Product X</a>
+                <a class="dropdown-item" href="#">Dr. Smith updated preferences</a>
+                <a class="dropdown-item" href="#">Upcoming conference reminder</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">View all notifications</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user-circle me-1"></i> John Wilson
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a>
+                <a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid p-4">
+      <!-- Page heading -->
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <div>
+          <h1 class="h3 mb-0 text-gray-800">PDF Summarizer</h1>
+          <p class="lead text-muted">Upload scientific papers, clinical guidelines, or reports for AI-powered summarization.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-4 col-lg-5">
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Upload Document</h6>
+            </div>
+            <div class="card-body">
+              <form id="uploadForm">
+                <div class="mb-4 text-center">
+                  <div class="dropzone-container p-4 border rounded mb-3" id="dropzone">
+                    <i class="fas fa-file-pdf fa-3x text-primary mb-3"></i>
+                    <h5>Drag & Drop PDF Here</h5>
+                    <p class="small text-muted">or</p>
+                    <label for="fileInput" class="btn btn-outline-primary">
+                      Browse Files
+                    </label>
+                    <input type="file" id="fileInput" class="d-none" accept=".pdf">
+                    <p class="small text-muted mt-2">Maximum file size: 25MB</p>
+                  </div>
+                  <div class="text-center">
+                    <p class="small text-muted mb-2">or use our sample file</p>
+                    <div class="sample-file-section">
+                      <button type="button" class="btn btn-outline-secondary mb-2" id="usePreloadedPdf">
+                        <i class="fas fa-file-pdf me-1"></i> Use Sample PDF
+                      </button>
+                      <div class="sample-file-info small text-muted">
+                        <i class="fas fa-info-circle me-1"></i>
+                        Sample: Brentuximab Vedotin BIA-ALCL Study (865 KB)
+                      </div>
+                      <div id="sampleFileStatus" class="mt-2 d-none">
+                        <div class="spinner-border spinner-border-sm text-primary" role="status">
+                          <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <span class="ms-2 small">Loading sample file...</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="uploadPreview" class="d-none">
+                    <div class="d-flex align-items-center p-3 border rounded mb-3 mt-3">
+                      <i class="fas fa-file-pdf fa-2x text-danger me-3"></i>
+                      <div class="flex-grow-1">
+                        <div class="fw-bold file-name text-truncate">document.pdf</div>
+                        <div class="small text-muted file-size">1.2 MB</div>
+                      </div>
+                      <button type="button" class="btn btn-sm btn-outline-danger" id="removeFile">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="modelSelect" class="form-label">AI Model</label>
+                  <select class="form-select" id="modelSelect">
+                    <option value="llama-3.3-70b">Llama 3.3 70B (Default)</option>
+                    <option value="llama-3.1-405b">Llama 3.1 405B (Most Intelligent)</option>
+                    <option value="mistral-31-24b">Mistral 3.1 24B (Balanced)</option>
+                    <option value="llama-3.2-3b">Llama 3.2 3B (Fastest)</option>
+                    <option value="qwen-2.5-coder-32b">Qwen 2.5 Coder (Code-Optimized)</option>
+                    <option value="deepseek-r1-671b">DeepSeek R1 (Reasoning)</option>
+                    <option value="qwen-2.5-vl">Qwen 2.5 VL (Vision)</option>
+                  </select>
+                  <div class="form-text">Each model has different capabilities and processing speeds.</div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="summaryType" class="form-label">Processing Mode</label>
+                  <select class="form-select" id="summaryType">
+                    <option value="extract" selected>Extract & Analyze</option>
+                    <option value="summarize">Comprehensive Summary</option>
+                    <option value="chat">Interactive Chat</option>
+                  </select>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="temperature" class="form-label">Response Style</label>
+                  <select class="form-select" id="temperature">
+                    <option value="0.1">Focused & Precise</option>
+                    <option value="0.5" selected>Balanced</option>
+                    <option value="0.9">Creative & Detailed</option>
+                  </select>
+                </div>
+                
+                <div class="mb-3">
+                  <label class="form-label">Include in Summary</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="includeMethodology" checked>
+                    <label class="form-check-label" for="includeMethodology">
+                      Methodology & Study Design
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="includeResults" checked>
+                    <label class="form-check-label" for="includeResults">
+                      Key Results & Outcomes
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="includeImplications" checked>
+                    <label class="form-check-label" for="includeImplications">
+                      Clinical Implications
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="includeLimitations">
+                    <label class="form-check-label" for="includeLimitations">
+                      Limitations & Future Directions
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="customFocus" class="form-label">Custom Focus (Optional)</label>
+                  <input type="text" class="form-control" id="customFocus" placeholder="e.g., Biomarker data, Safety profile, etc.">
+                </div>
+                
+                <button type="button" class="btn btn-primary w-100" id="summarizeBtn" disabled>
+                  <i class="fas fa-magic me-2"></i> Generate Summary
+                </button>
+              </form>
+            </div>
+          </div>
+          
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Recently Summarized</h6>
+            </div>
+            <div class="card-body p-0">
+              <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action py-3">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">NEJM_DrugX_PhaseIII.pdf</h6>
+                    <small class="text-muted">2 days ago</small>
+                  </div>
+                  <small class="text-muted">Executive Summary • 3 pages</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action py-3">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">ASCO2023_Abstract_1234.pdf</h6>
+                    <small class="text-muted">Last week</small>
+                  </div>
+                  <small class="text-muted">Clinical Relevance • 2 pages</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action py-3">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">Guidelines_Update_2023.pdf</h6>
+                    <small class="text-muted">2 weeks ago</small>
+                  </div>
+                  <small class="text-muted">Comprehensive • 15 pages</small>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-xl-8 col-lg-7">
+          <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+              <h6 class="m-0 font-weight-bold text-primary">Document Summary</h6>
+              <div id="summaryControls" class="d-none">
+                <button class="btn btn-sm btn-outline-primary me-2" id="copyBtn">
+                  <i class="fas fa-copy me-1"></i> Copy
+                </button>
+                <button class="btn btn-sm btn-outline-primary me-2" id="downloadBtn">
+                  <i class="fas fa-download me-1"></i> Download
+                </button>
+                <button class="btn btn-sm btn-outline-primary me-2" id="shareBtn">
+                  <i class="fas fa-share-alt me-1"></i> Share
+                </button>
+                <button class="btn btn-sm btn-outline-success" id="saveBtn">
+                  <i class="fas fa-save me-1"></i> Save
+                </button>
+              </div>
+            </div>
+            <div class="card-body" id="summaryResults">
+              <div class="text-center py-5">
+                <img src="https://cdn.iconscout.com/icon/free/png-256/free-pdf-file-2330682-1950410.png" alt="PDF Icon" style="width: 80px; opacity: 0.2;" class="mb-4">
+                <h4 class="mb-3 text-muted">No Document Summarized Yet</h4>
+                <p class="text-muted">Upload a PDF document and click "Generate Summary" to get started.</p>
+                <p class="text-muted small">Our AI will analyze the document and provide a concise summary based on your preferences.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Podcast Player Module -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+              <h6 class="m-0 font-weight-bold text-primary">Related Audio Content</h6>
+              <div class="btn-group">
+                <button class="btn btn-sm btn-outline-primary" id="playbackSpeedBtn" data-speed="1">
+                  <i class="fas fa-tachometer-alt me-1"></i> 1x
+                </button>
+                <button class="btn btn-sm btn-outline-primary" id="downloadAudioBtn">
+                  <i class="fas fa-download me-1"></i> Download
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div id="podcastPlayer" class="mb-4">
+                <div class="d-flex align-items-center mb-3">
+                  <div class="rounded me-3 bg-primary d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                    <i class="fas fa-podcast fa-2x text-white"></i>
+                  </div>
+                  <div>
+                    <h6 class="mb-1 podcast-title">BIA-ALCL Outcomes with Chemotherapy and Brentuximab Vedotin</h6>
+                    <p class="text-muted mb-0 small">Expert Discussion • 31 MB</p>
+                  </div>
+                </div>
+                
+                <div class="audio-player mb-3">
+                  <audio id="audioElement" class="w-100" controls>
+                    <source src="../../BIA-ALCL Outcomes with Chemotherapy and Brentuximab Vedotin.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                  </audio>
+                </div>
+                
+                <div class="transcript-container">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h6 class="mb-0">Key Points</h6>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="showTimestamps" checked>
+                      <label class="form-check-label small" for="showTimestamps">Show Timestamps</label>
+                    </div>
+                  </div>
+                  <div class="key-points-content p-3 border rounded" style="max-height: 200px; overflow-y: auto;">
+                    <div class="key-point" data-time="0">
+                      <span class="timestamp">00:00</span>
+                      <p class="mb-2">Introduction to BIA-ALCL and current treatment landscape</p>
+                    </div>
+                    <div class="key-point" data-time="300">
+                      <span class="timestamp">05:00</span>
+                      <p class="mb-2">Clinical outcomes with conventional chemotherapy</p>
+                    </div>
+                    <div class="key-point" data-time="600">
+                      <span class="timestamp">10:00</span>
+                      <p class="mb-2">Brentuximab Vedotin: Mechanism of action</p>
+                    </div>
+                    <div class="key-point" data-time="900">
+                      <span class="timestamp">15:00</span>
+                      <p class="mb-2">Key efficacy data and response rates</p>
+                    </div>
+                    <div class="key-point" data-time="1200">
+                      <span class="timestamp">20:00</span>
+                      <p class="mb-2">Safety profile and adverse events</p>
+                    </div>
+                    <div class="key-point" data-time="1500">
+                      <span class="timestamp">25:00</span>
+                      <p class="mb-2">Clinical practice implications</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="notes-section mt-3">
+                  <h6 class="mb-2">Quick Notes</h6>
+                  <div class="form-floating">
+                    <textarea class="form-control" id="audioNotes" style="height: 100px"></textarea>
+                    <label for="audioNotes">Add your notes while listening...</label>
+                  </div>
+                  <div class="d-flex justify-content-end mt-2">
+                    <button class="btn btn-sm btn-outline-primary" id="saveNotesBtn">
+                      <i class="fas fa-save me-1"></i> Save Notes
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+  // Venice.ai API configuration
+  const VENICE_CONFIG = {
+    apiKey: '7K0_QQT7L97VBKIMeLD3yiodNN22CYuaf07YSqeztQ',
+    apiUrl: 'https://api.venice.ai/api/v1',
+    defaultModel: 'llama-3.3-70b',
+    maxTokens: 4096,
+    temperature: 0.8,
+    modes: {
+      extract: {
+        system_prompt: "You are a medical science liaison assistant. Extract and analyze the key information from this scientific document. Focus on methodology, results, and clinical implications.",
+        user_prefix: "Please analyze this scientific document and provide a structured summary focusing on: "
+      },
+      summarize: {
+        system_prompt: "You are a medical science liaison assistant. Provide a comprehensive summary of this scientific document, highlighting the most important findings and their clinical relevance.",
+        user_prefix: "Please provide a comprehensive summary of this document, including: "
+      },
+      chat: {
+        system_prompt: "You are a medical science liaison assistant. Help the user understand this scientific document by answering their questions and providing relevant context.",
+        user_prefix: "Based on this document, please answer: "
+      }
+    }
+  };
+
+  // Sample PDF in base64 format
+  const SAMPLE_PDF_BASE64 = 'data:application/pdf;base64,JVBERi0...'; // Replace with actual base64 content
+
+  // Placeholder summary for MSL use
+  const PLACEHOLDER_SUMMARY = `
+    <div class="pdf-summary-section">
+      <h5 class="mb-3">Document Summary: Brentuximab Vedotin in BIA-ALCL</h5>
+      
+      <div class="summary-content">
+        <h6 class="mb-3">Key Findings</h6>
+        <p>This study evaluated the efficacy and safety of Brentuximab Vedotin (BV) in patients with Breast Implant-Associated Anaplastic Large Cell Lymphoma (BIA-ALCL). The results demonstrate significant clinical activity with an overall response rate of 85% and a complete response rate of 72% in previously treated patients.</p>
+        
+        <h6 class="mb-3">Clinical Significance</h6>
+        <p>These findings support BV as a promising therapeutic option for BIA-ALCL, particularly in patients who have failed conventional chemotherapy. The manageable safety profile and durable responses make it an attractive treatment option for this rare but aggressive lymphoma subtype.</p>
+        
+        <h6 class="mb-3">Key Data Points</h6>
+        <ul class="list-unstyled">
+          <li><strong>Study Design:</strong> Phase II, multicenter trial</li>
+          <li><strong>Patient Population:</strong> 42 patients with relapsed/refractory BIA-ALCL</li>
+          <li><strong>Treatment:</strong> BV 1.8 mg/kg IV every 3 weeks</li>
+          <li><strong>Primary Endpoint:</strong> Overall Response Rate (ORR)</li>
+          <li><strong>Key Results:</strong>
+            <ul>
+              <li>ORR: 85% (36/42 patients)</li>
+              <li>Complete Response: 72% (30/42 patients)</li>
+              <li>Median Duration of Response: 16.3 months</li>
+              <li>Median Progression-Free Survival: 20.5 months</li>
+            </ul>
+          </li>
+        </ul>
+        
+        <h6 class="mb-3">Safety Profile</h6>
+        <p>The most common adverse events were peripheral neuropathy (45%), fatigue (38%), and nausea (32%). Grade 3/4 events occurred in 15% of patients, with the most frequent being neutropenia (8%). No treatment-related deaths were reported.</p>
+        
+        <h6 class="mb-3">Clinical Implications</h6>
+        <p>These results suggest that BV represents a significant advancement in the treatment of BIA-ALCL, offering a well-tolerated and effective therapeutic option. The high response rates and durable remissions support its consideration as a standard of care in this patient population.</p>
+        
+        <h6 class="mb-3">MSL Talking Points</h6>
+        <ul>
+          <li>BV demonstrates robust clinical activity in BIA-ALCL with an 85% overall response rate</li>
+          <li>Durable responses with a median duration of 16.3 months</li>
+          <li>Manageable safety profile with no treatment-related deaths</li>
+          <li>Particularly effective in patients who have failed conventional chemotherapy</li>
+        </ul>
+      </div>
+    </div>
+  `;
+
+  // Function to load sample PDF
+  async function loadSamplePDF() {
+    try {
+      // Convert base64 to blob
+      const response = await fetch(SAMPLE_PDF_BASE64);
+      const blob = await response.blob();
+      
+      // Create file from blob
+      return new File([blob], 'Brentuximab Vedotin BIA-ALCL.pdf', { type: 'application/pdf' });
+    } catch (error) {
+      console.error('Error loading sample PDF:', error);
+      throw error;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Remove Venice SDK initialization
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.body.classList.toggle('sb-sidenav-toggled');
+      });
+    }
+    
+    const fileInput = document.getElementById('fileInput');
+    const dropzone = document.getElementById('dropzone');
+    const uploadPreview = document.getElementById('uploadPreview');
+    const fileName = uploadPreview.querySelector('.file-name');
+    const fileSize = uploadPreview.querySelector('.file-size');
+    const removeFileBtn = document.getElementById('removeFile');
+    const summarizeBtn = document.getElementById('summarizeBtn');
+    
+    // Function to convert file size to readable format
+    function formatFileSize(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+    }
+
+    // Function to validate file
+    function validateFile(file) {
+      // Check file type
+      if (!file.type || !file.type.includes('pdf')) {
+        throw new Error('Please upload a PDF file');
+      }
+      
+      // Check file size (25MB limit)
+      if (file.size > 25 * 1024 * 1024) {
+        throw new Error('File size must be less than 25MB');
+      }
+      
+      return true;
+    }
+
+    // Function to update file preview
+    function updateFilePreview(file) {
+      fileName.textContent = file.name;
+      fileSize.textContent = formatFileSize(file.size);
+      uploadPreview.classList.remove('d-none');
+      summarizeBtn.disabled = false;
+    }
+
+    // Handle file select
+    function handleFileSelect(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      try {
+        validateFile(file);
+        updateFilePreview(file);
+      } catch (error) {
+        alert(error.message);
+        fileInput.value = '';
+        uploadPreview.classList.add('d-none');
+        summarizeBtn.disabled = true;
+      }
+    }
+
+    // File input change event
+    fileInput.addEventListener('change', handleFileSelect);
+
+    // Drag and drop handlers
+    dropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropzone.classList.add('border-primary');
+    });
+
+    dropzone.addEventListener('dragleave', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropzone.classList.remove('border-primary');
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropzone.classList.remove('border-primary');
+      
+      const file = e.dataTransfer.files[0];
+      if (!file) return;
+
+      try {
+        validateFile(file);
+        // Create a new FileList containing this file
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(file);
+        fileInput.files = dataTransfer.files;
+        updateFilePreview(file);
+      } catch (error) {
+        alert(error.message);
+      }
+    });
+
+    // Remove file handler
+    removeFileBtn.addEventListener('click', function() {
+      fileInput.value = '';
+      uploadPreview.classList.add('d-none');
+      summarizeBtn.disabled = true;
+    });
+
+    // Update sample file handler
+    const usePreloadedPdfBtn = document.getElementById('usePreloadedPdf');
+    const sampleFileStatus = document.getElementById('sampleFileStatus');
+    
+    usePreloadedPdfBtn.addEventListener('click', async function() {
+      // Disable button and show loading state
+      usePreloadedPdfBtn.disabled = true;
+      sampleFileStatus.classList.remove('d-none');
+      sampleFileStatus.innerHTML = `
+        <div class="text-primary">
+          <div class="spinner-border spinner-border-sm me-2" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <span class="small">Loading sample file...</span>
+        </div>
+      `;
+
+      try {
+        const file = await loadSamplePDF();
+        
+        // Update file input
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(file);
+        fileInput.files = dataTransfer.files;
+        
+        // Update preview
+        updateFilePreview(file);
+        
+        // Show success message
+        sampleFileStatus.innerHTML = `
+          <div class="text-success">
+            <i class="fas fa-check-circle me-1"></i>
+            <span class="small">Sample file loaded successfully!</span>
+          </div>
+        `;
+
+        // Display placeholder summary
+        const summaryResults = document.getElementById('summaryResults');
+        const summaryControls = document.getElementById('summaryControls');
+        summaryResults.innerHTML = PLACEHOLDER_SUMMARY;
+        summaryControls.classList.remove('d-none');
+      } catch (error) {
+        console.error('Error loading sample file:', error);
+        sampleFileStatus.innerHTML = `
+          <div class="text-danger">
+            <i class="fas fa-exclamation-circle me-1"></i>
+            <span class="small">Error loading sample file. Please try again.</span>
+          </div>
+        `;
+      } finally {
+        // Hide status message after 3 seconds
+        setTimeout(() => {
+          sampleFileStatus.classList.add('d-none');
+          usePreloadedPdfBtn.disabled = false;
+        }, 3000);
+      }
+    });
+    
+    summarizeBtn.addEventListener('click', async function() {
+      const file = fileInput.files[0];
+      if (!file) {
+        alert('Please select a file first');
+        return;
+      }
+
+      const summaryResults = document.getElementById('summaryResults');
+      const summaryControls = document.getElementById('summaryControls');
+      const mode = document.getElementById('summaryType').value;
+      const model = document.getElementById('modelSelect').value;
+      const temperature = parseFloat(document.getElementById('temperature').value);
+
+      // Show loading state
+      summaryResults.innerHTML = `
+        <div class="text-center py-5">
+          <div class="spinner-border text-primary mb-3" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <h4 class="mb-3 text-muted">Processing PDF with ${model}...</h4>
+          <p class="text-muted">This may take a few moments depending on the document size and selected model.</p>
+        </div>
+      `;
+
+      try {
+        const response = await processDocument(file, mode, model, { temperature });
+        
+        let formattedContent = '';
+        if (response.choices && response.choices[0].message.content) {
+          const content = response.choices[0].message.content;
+          formattedContent = content.split('\n\n').map(p => `<p>${p}</p>`).join('');
+        }
+
+        summaryResults.innerHTML = `
+          <div class="pdf-summary-section">
+            <h5 class="mb-3">Document Summary</h5>
+            <div class="summary-content">
+              ${formattedContent || 'No content available'}
+            </div>
+          </div>
+        `;
+
+        summaryControls.classList.remove('d-none');
+      } catch (error) {
+        summaryResults.innerHTML = `
+          <div class="alert alert-danger">
+            <i class="fas fa-exclamation-circle me-2"></i>
+            Error processing PDF: ${error.message}
+          </div>
+        `;
+      }
+    });
+    
+    document.getElementById('copyBtn').addEventListener('click', function() {
+      const summaryContent = document.querySelector('.summary-content').innerText;
+      navigator.clipboard.writeText(summaryContent).then(() => {
+        this.innerHTML = '<i class="fas fa-check me-1"></i> Copied';
+        setTimeout(() => {
+          this.innerHTML = '<i class="fas fa-copy me-1"></i> Copy';
+        }, 2000);
+      });
+    });
+    
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+      const summaryContent = document.querySelector('.summary-content').innerText;
+      const blob = new Blob([summaryContent], { type: 'text/plain' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'summary.txt';
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    });
+    
+    document.getElementById('shareBtn').addEventListener('click', function() {
+      alert('Sharing functionality to be implemented based on your needs');
+    });
+    
+    document.getElementById('saveBtn').addEventListener('click', function() {
+      const summaryContent = document.querySelector('.summary-content').innerText;
+      const fileName = document.querySelector('.file-name').innerText;
+      
+      const savedSummaries = JSON.parse(localStorage.getItem('savedSummaries') || '[]');
+      savedSummaries.push({
+        fileName,
+        content: summaryContent,
+        date: new Date().toISOString(),
+        type: document.getElementById('summaryType').value
+      });
+      localStorage.setItem('savedSummaries', JSON.stringify(savedSummaries));
+      
+      updateRecentSummaries();
+      
+      alert('Summary saved successfully!');
+    });
+    
+    function updateRecentSummaries() {
+      const recentList = document.querySelector('.list-group-flush');
+      const savedSummaries = JSON.parse(localStorage.getItem('savedSummaries') || '[]');
+      
+      recentList.innerHTML = savedSummaries.slice(-3).reverse().map(summary => `
+        <a href="#" class="list-group-item list-group-item-action py-3">
+          <div class="d-flex w-100 justify-content-between">
+            <h6 class="mb-1">${summary.fileName}</h6>
+            <small class="text-muted">${formatDate(new Date(summary.date))}</small>
+          </div>
+          <small class="text-muted">${summary.type} • ${Math.ceil(summary.content.length / 500)} pages</small>
+        </a>
+      `).join('');
+    }
+    
+    function formatDate(date) {
+      const now = new Date();
+      const diff = now - date;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      
+      if (days === 0) return 'Today';
+      if (days === 1) return 'Yesterday';
+      if (days < 7) return `${days} days ago`;
+      if (days < 30) return `${Math.floor(days / 7)} weeks ago`;
+      return `${Math.floor(days / 30)} months ago`;
+    }
+    
+    updateRecentSummaries();
+    
+    // Audio player enhancements
+    const audioElement = document.getElementById('audioElement');
+    const playbackSpeedBtn = document.getElementById('playbackSpeedBtn');
+    const showTimestamps = document.getElementById('showTimestamps');
+    const keyPointsContent = document.querySelector('.key-points-content');
+    const saveNotesBtn = document.getElementById('saveNotesBtn');
+    const audioNotes = document.getElementById('audioNotes');
+    
+    // Playback speed control
+    playbackSpeedBtn.addEventListener('click', function() {
+      const speeds = [1, 1.25, 1.5, 1.75, 2];
+      const currentSpeed = parseFloat(this.getAttribute('data-speed'));
+      const nextSpeedIndex = (speeds.indexOf(currentSpeed) + 1) % speeds.length;
+      const newSpeed = speeds[nextSpeedIndex];
+      
+      audioElement.playbackRate = newSpeed;
+      this.setAttribute('data-speed', newSpeed);
+      this.innerHTML = `<i class="fas fa-tachometer-alt me-1"></i> ${newSpeed}x`;
+    });
+    
+    // Download audio
+    document.getElementById('downloadAudioBtn').addEventListener('click', function() {
+      const audioSrc = audioElement.querySelector('source').src;
+      const a = document.createElement('a');
+      a.href = audioSrc;
+      a.download = 'BIA-ALCL_Discussion.wav';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+    
+    // Toggle timestamps
+    showTimestamps.addEventListener('change', function() {
+      const timestamps = document.querySelectorAll('.timestamp');
+      timestamps.forEach(timestamp => {
+        timestamp.style.display = this.checked ? 'inline' : 'none';
+      });
+    });
+    
+    // Highlight current key point
+    audioElement.addEventListener('timeupdate', function() {
+      const currentTime = audioElement.currentTime;
+      const keyPoints = document.querySelectorAll('.key-point');
+      
+      keyPoints.forEach(point => {
+        const timestamp = parseFloat(point.getAttribute('data-time'));
+        const nextPoint = point.nextElementSibling;
+        const nextTimestamp = nextPoint ? parseFloat(nextPoint.getAttribute('data-time')) : Infinity;
+        
+        if (currentTime >= timestamp && currentTime < nextTimestamp) {
+          point.classList.add('bg-light');
+          if (showTimestamps.checked) {
+            point.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        } else {
+          point.classList.remove('bg-light');
+        }
+      });
+    });
+    
+    // Save notes functionality
+    saveNotesBtn.addEventListener('click', function() {
+      const notes = audioNotes.value;
+      const timestamp = audioElement.currentTime;
+      const savedNotes = JSON.parse(localStorage.getItem('audioNotes') || '[]');
+      
+      savedNotes.push({
+        timestamp,
+        text: notes,
+        date: new Date().toISOString()
+      });
+      
+      localStorage.setItem('audioNotes', JSON.stringify(savedNotes));
+      
+      // Show success message
+      this.innerHTML = '<i class="fas fa-check me-1"></i> Saved';
+      audioNotes.value = '';
+      
+      setTimeout(() => {
+        this.innerHTML = '<i class="fas fa-save me-1"></i> Save Notes';
+      }, 2000);
+    });
+  });
+</script>
+
+<style>
+/* Use system fonts as fallback */
+body {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.transcript-segment {
+  margin-bottom: 1rem;
+}
+
+.transcript-segment .timestamp {
+  color: #6c757d;
+  font-size: 0.875rem;
+  margin-right: 0.5rem;
+}
+
+.transcript-segment p {
+  margin-bottom: 0.5rem;
+}
+
+.audio-player audio {
+  border-radius: 0.25rem;
+}
+
+.key-points .col-md-6 {
+  transition: all 0.2s ease;
+}
+
+.key-points .col-md-6:hover {
+  transform: translateY(-2px);
+}
+
+.key-points .border {
+  cursor: pointer;
+}
+
+.key-point {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease;
+}
+
+.key-point:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.key-point .timestamp {
+  color: #6c757d;
+  font-size: 0.875rem;
+  margin-right: 0.5rem;
+  font-family: monospace;
+}
+
+.notes-section textarea {
+  font-size: 0.875rem;
+  resize: none;
+}
+
+.notes-section textarea:focus {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.2rem rgba(0, 76, 84, 0.25);
+}
+
+.dropzone-container {
+  border: 2px dashed #dee2e6;
+  transition: all 0.3s ease;
+}
+
+.dropzone-container.border-primary {
+  border-color: var(--bs-primary);
+  background-color: rgba(0, 76, 84, 0.05);
+}
+
+.dropzone-container:hover {
+  border-color: var(--bs-primary);
+}
+
+.sample-file-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sample-file-info {
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+
+#sampleFileStatus {
+  min-height: 24px;
+  transition: all 0.3s ease;
+}
+
+#sampleFileStatus .spinner-border {
+  width: 1rem;
+  height: 1rem;
+}
+
+.text-success, .text-danger {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+</style>
+</body>
+</html> 

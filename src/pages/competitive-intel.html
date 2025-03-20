@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competitive Intelligence - MSL Precall Planning</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link href="../../css/styles.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-white" id="sidebar-wrapper">
+    <div class="sidebar-heading">
+      <i class="fas fa-briefcase-medical me-2"></i>MSL PRECALL PLANNING
+    </div>
+    
+    <a href="../../index.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-chart-line"></i>Dashboard
+    </a>
+    
+    <div class="sidebar-heading">PLANNING TOOLS</div>
+    <a href="meeting-objectives.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-bullseye"></i>Meeting Objectives
+    </a>
+    <a href="call-checklist.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-tasks"></i>Call Planning Checklist
+    </a>
+    <a href="next-dialogue.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-comments"></i>Next Best Dialogue
+    </a>
+    
+    <div class="sidebar-heading">INTELLIGENCE TOOLS</div>
+    <a href="learn-from-hcp.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-user-md"></i>Learn from HCP
+    </a>
+    <a href="competitive-intel.html" class="list-group-item list-group-item-action active">
+      <i class="fas fa-chess"></i>Competitive Intelligence
+    </a>
+    <a href="pdf-summarizer.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-file-pdf"></i>PDF Summarizer
+    </a>
+  </div>
+  
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+      <div class="container-fluid">
+        <button class="btn btn-sm" id="sidebarToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell me-1 position-relative">
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    3+
+                    <span class="visually-hidden">unread notifications</span>
+                  </span>
+                </i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">New trial results for Product X</a>
+                <a class="dropdown-item" href="#">Dr. Smith updated preferences</a>
+                <a class="dropdown-item" href="#">Upcoming conference reminder</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">View all notifications</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user-circle me-1"></i> John Wilson
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a>
+                <a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid p-4">
+      <!-- Page heading -->
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <div>
+          <h1 class="h3 mb-0 text-gray-800">Competitive & Market Intelligence</h1>
+          <p class="lead text-muted">Stay updated on competitor activities, market trends, and regulatory changes.</p>
+        </div>
+      </div>
+
+      <!-- Content Row -->
+      <div class="row">
+        <!-- Market News Column -->
+        <div class="col-xl-8 col-lg-7">
+          <!-- Market News Card -->
+          <div class="card market-news-card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <h5 class="mb-0">Latest Market News</h5>
+              <div class="dropdown">
+                <button class="btn btn-link text-muted p-0" type="button" id="newsFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-filter"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="newsFilterDropdown">
+                  <li><a class="dropdown-item active" href="#">All News</a></li>
+                  <li><a class="dropdown-item" href="#">Clinical Trials</a></li>
+                  <li><a class="dropdown-item" href="#">Regulatory Updates</a></li>
+                  <li><a class="dropdown-item" href="#">Market Events</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#newsDetailModal">
+                  <div class="d-flex w-100 justify-content-between mb-1">
+                    <h6 class="mb-1">Competitor A Announces Positive Phase III Results</h6>
+                    <small class="news-date">2h ago</small>
+                  </div>
+                  <p class="mb-1">Phase III trial shows 42% reduction in disease progression risk compared to standard of care.</p>
+                  <small class="news-source"><i class="fas fa-newspaper me-1"></i>Clinical Trials Weekly</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between mb-1">
+                    <h6 class="mb-1">FDA Grants Priority Review to Competitor B's New Drug</h6>
+                    <small class="news-date">1d ago</small>
+                  </div>
+                  <p class="mb-1">PDUFA date set for Q4 2024, potential impact on market dynamics expected.</p>
+                  <small class="news-source"><i class="fas fa-newspaper me-1"></i>Regulatory Focus</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between mb-1">
+                    <h6 class="mb-1">New Market Analysis Report Released</h6>
+                    <small class="news-date">2d ago</small>
+                  </div>
+                  <p class="mb-1">Global market expected to reach $8.5B by 2025, CAGR of 12.3%.</p>
+                  <small class="news-source"><i class="fas fa-chart-line me-1"></i>Market Research Pro</small>
+                </a>
+              </div>
+            </div>
+            <div class="card-footer bg-transparent border-top-0 text-center">
+              <a href="#" class="btn btn-link text-primary">View All News</a>
+            </div>
+          </div>
+
+          <!-- Competitive Landscape -->
+          <div class="card competitor-card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <h5 class="mb-0">Competitive Landscape</h5>
+              <button class="btn btn-sm btn-outline-primary">
+                <i class="fas fa-download me-1"></i>Export
+              </button>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                  <thead>
+                    <tr>
+                      <th>Competitor</th>
+                      <th>Product</th>
+                      <th>Status</th>
+                      <th>Key Differentiator</th>
+                      <th>Threat Level</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <div class="competitor-logo me-2">
+                            <i class="fas fa-building"></i>
+                          </div>
+                          <div>Competitor A</div>
+                        </div>
+                      </td>
+                      <td>Drug ABC</td>
+                      <td><span class="competitor-status phase3">Phase III</span></td>
+                      <td>Superior PFS in overall population</td>
+                      <td><span class="badge bg-danger">High</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <div class="competitor-logo me-2">
+                            <i class="fas fa-building"></i>
+                          </div>
+                          <div>Competitor B</div>
+                        </div>
+                      </td>
+                      <td>Drug XYZ</td>
+                      <td><span class="competitor-status phase2">Phase II</span></td>
+                      <td>Novel MOA, potential for combinations</td>
+                      <td><span class="badge bg-warning text-dark">Medium</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <div class="competitor-logo me-2">
+                            <i class="fas fa-building"></i>
+                          </div>
+                          <div>Competitor C</div>
+                        </div>
+                      </td>
+                      <td>Drug DEF</td>
+                      <td><span class="competitor-status approved">Approved</span></td>
+                      <td>Established safety profile</td>
+                      <td><span class="badge bg-info">Low</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Market Share and KOL Sentiment Column -->
+        <div class="col-xl-4 col-lg-5">
+          <!-- Market Share Card -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+              <h6 class="m-0 font-weight-bold text-primary">Market Share Analysis</h6>
+              <div class="dropdown">
+                <button class="btn btn-link text-muted p-0" type="button" id="marketShareDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-ellipsis-v"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="marketShareDropdown">
+                  <li><a class="dropdown-item" href="#">View Details</a></li>
+                  <li><a class="dropdown-item" href="#">Export Data</a></li>
+                  <li><a class="dropdown-item" href="#">Print Report</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="market-share-chart-container">
+                <canvas id="marketShareChart"></canvas>
+              </div>
+              <div class="mt-4">
+                <div class="small mb-1">
+                  <i class="fas fa-circle text-primary me-1"></i> Our Drug X: 35%
+                </div>
+                <div class="small mb-1">
+                  <i class="fas fa-circle text-success me-1"></i> Competitor A: 25%
+                </div>
+                <div class="small mb-1">
+                  <i class="fas fa-circle text-info me-1"></i> Competitor B: 20%
+                </div>
+                <div class="small">
+                  <i class="fas fa-circle text-warning me-1"></i> Others: 20%
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KOL Sentiment Card -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">KOL Sentiment Analysis</h6>
+            </div>
+            <div class="card-body">
+              <div class="kol-sentiment">
+                <span>Efficacy</span>
+                <div class="sentiment-bar">
+                  <div class="positive" style="width: 85%; height: 100%; border-radius: 4px;"></div>
+                </div>
+                <span class="sentiment-value">85%</span>
+              </div>
+              <div class="kol-sentiment">
+                <span>Safety</span>
+                <div class="sentiment-bar">
+                  <div class="positive" style="width: 92%; height: 100%; border-radius: 4px;"></div>
+                </div>
+                <span class="sentiment-value">92%</span>
+              </div>
+              <div class="kol-sentiment">
+                <span>Usability</span>
+                <div class="sentiment-bar">
+                  <div class="positive" style="width: 78%; height: 100%; border-radius: 4px;"></div>
+                </div>
+                <span class="sentiment-value">78%</span>
+              </div>
+              <div class="kol-sentiment">
+                <span>Cost</span>
+                <div class="sentiment-bar">
+                  <div class="neutral" style="width: 65%; height: 100%; border-radius: 4px;"></div>
+                </div>
+                <span class="sentiment-value">65%</span>
+              </div>
+              <div class="mt-3">
+                <small class="text-muted">Based on interviews with 50 KOLs in the past 3 months</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- News Detail Modal -->
+      <div class="modal fade news-detail-modal" id="newsDetailModal" tabindex="-1" aria-labelledby="newsDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="newsDetailModalLabel">Impact Analysis: Competitor A's Phase III Results</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="alert alert-primary">
+                <i class="fas fa-info-circle me-2"></i> This analysis is generated using AI based on available data and competitive intelligence.
+              </div>
+              
+              <h5 class="border-bottom pb-2">Summary of Development</h5>
+              <p>Competitor A announced positive Phase III results for Drug ABC in metastatic breast cancer patients, demonstrating:</p>
+              <ul>
+                <li>42% reduction in risk of disease progression (HR 0.58, 95% CI 0.45-0.74)</li>
+                <li>Median PFS of 12.4 months vs. 8.1 months for standard of care</li>
+                <li>Objective response rate of 61% vs. 42%</li>
+                <li>Manageable safety profile with notably lower cardiac toxicity</li>
+              </ul>
+              
+              <h5 class="border-bottom pb-2 mt-4">Potential Impact on Our Products</h5>
+              <div class="table-responsive">
+                <table class="table impact-table">
+                  <thead>
+                    <tr>
+                      <th>Aspect</th>
+                      <th>Impact Level</th>
+                      <th>Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Market Share</td>
+                      <td><span class="badge bg-danger">High</span></td>
+                      <td>Potential erosion of 15-20% market share in the metastatic setting if approved</td>
+                    </tr>
+                    <tr>
+                      <td>Competitive Positioning</td>
+                      <td><span class="badge bg-warning text-dark">Medium</span></td>
+                      <td>Our efficacy data remains superior in BRCA+ patients, but inferior in overall population</td>
+                    </tr>
+                    <tr>
+                      <td>Pricing Pressure</td>
+                      <td><span class="badge bg-warning text-dark">Medium</span></td>
+                      <td>May need to reassess pricing strategy or emphasize value-added services</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <h5 class="border-bottom pb-2 mt-4">Recommended Actions</h5>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="action-card card mb-3">
+                    <div class="card-body">
+                      <h6 class="card-title">Short-term (0-3 months)</h6>
+                      <ul class="small mb-0">
+                        <li>Prepare comparative messaging focusing on our superior outcomes in key subgroups</li>
+                        <li>Develop KOL communication plan to emphasize our differentiation</li>
+                        <li>Accelerate patient support program enhancements</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="action-card card mb-3">
+                    <div class="card-body">
+                      <h6 class="card-title">Medium-term (3-12 months)</h6>
+                      <ul class="small mb-0">
+                        <li>Consider accelerating combination studies with standard of care</li>
+                        <li>Increase biomarker testing initiatives to identify ideal patients</li>
+                        <li>Review pricing and market access strategy</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="talking-points p-3 rounded mt-3">
+                <h6 class="mb-3">MSL Talking Points:</h6>
+                <p class="small">When discussing with HCPs, focus on these differentiation points:</p>
+                <ol class="small mb-0">
+                  <li>Our superior CNS penetration and efficacy in brain metastases (not studied in Competitor A's trial)</li>
+                  <li>Mature safety data with 3+ years of real-world experience</li>
+                  <li>Proven benefit in combination with standard treatments already in clinical practice</li>
+                  <li>Robust patient support program with financial assistance and nurse navigator support</li>
+                </ol>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">
+                <i class="fas fa-download me-1"></i>Download Analysis
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Toggle the side navigation
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.body.classList.toggle('sb-sidenav-toggled');
+      });
+    }
+    
+    // Initialize market share chart
+    const ctx = document.getElementById('marketShareChart');
+    if (ctx) {
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Our Drug X', 'Competitor A', 'Competitor B', 'Others'],
+          datasets: [{
+            data: [35, 25, 20, 20],
+            backgroundColor: ['#004C54', '#198754', '#0dcaf0', '#ffc107'],
+            hoverBackgroundColor: ['#003741', '#146c43', '#0aa2c0', '#d39e00'],
+            hoverBorderColor: "rgba(234, 236, 244, 1)",
+          }],
+        },
+        options: {
+          maintainAspectRatio: false,
+          tooltips: {
+            backgroundColor: "rgb(255,255,255)",
+            bodyFontColor: "#858796",
+            borderColor: '#dddfeb',
+            borderWidth: 1,
+            xPadding: 15,
+            yPadding: 15,
+            displayColors: false,
+            caretPadding: 10,
+          },
+          legend: {
+            display: false
+          },
+          cutoutPercentage: 80,
+        },
+      });
+    }
+  });
+</script>
+</body>
+</html> 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSL Precall Planning</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+  <div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="border-end bg-white" id="sidebar-wrapper">
+      <div class="sidebar-heading border-bottom bg-primary text-white">
+        <i class="fas fa-laptop-medical me-2"></i>MSL Precall Planning
+      </div>
+      <div class="list-group list-group-flush">
+        <a href="#dashboard" class="list-group-item list-group-item-action active" data-page="dashboard">
+          <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+        </a>
+        <a href="#hcp-insights" class="list-group-item list-group-item-action" data-page="hcp-insights">
+          <i class="fas fa-user-md me-2"></i>HCP Insights
+        </a>
+        <a href="#pdf-summarizer" class="list-group-item list-group-item-action" data-page="pdf-summarizer">
+          <i class="fas fa-file-pdf me-2"></i>PDF Summarizer
+        </a>
+        <a href="#learn-from-hcp" class="list-group-item list-group-item-action" data-page="learn-from-hcp">
+          <i class="fas fa-graduation-cap me-2"></i>Learn from HCP
+        </a>
+        <a href="#call-planning" class="list-group-item list-group-item-action" data-page="call-planning">
+          <i class="fas fa-tasks me-2"></i>Call Planning Checklist
+        </a>
+        <a href="#meeting-objectives" class="list-group-item list-group-item-action" data-page="meeting-objectives">
+          <i class="fas fa-bullseye me-2"></i>Meeting Objectives
+        </a>
+        <a href="#next-dialogue" class="list-group-item list-group-item-action" data-page="next-dialogue">
+          <i class="fas fa-comments me-2"></i>Next Best Dialogue
+        </a>
+        <a href="#market-intel" class="list-group-item list-group-item-action" data-page="market-intel">
+          <i class="fas fa-chart-line me-2"></i>Market Intelligence
+        </a>
+        <a href="#historical-data" class="list-group-item list-group-item-action" data-page="historical-data">
+          <i class="fas fa-history me-2"></i>Historical Call Data
+        </a>
+        <a href="#follow-up" class="list-group-item list-group-item-action" data-page="follow-up">
+          <i class="fas fa-clipboard-check me-2"></i>DFO & Follow-Up
+        </a>
+      </div>
+    </div>
+    
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="container-fluid">
+          <button class="btn btn-primary" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="ms-auto d-flex">
+            <div class="dropdown">
+              <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-user-circle me-1"></i> John Smith, PharmD
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="#"><i class="fas fa-user-cog me-2"></i>Profile</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+      <div class="container-fluid p-4" id="main-content">
+        <!-- Page content will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script type="module" src="./api/venice.js"></script>
+  <script type="module" src="./index.js"></script>
+</body>
+</html> 

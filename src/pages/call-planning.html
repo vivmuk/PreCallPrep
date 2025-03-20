@@ -1,0 +1,296 @@
+<div class="row mb-4">
+  <div class="col-12">
+    <h1 class="h3 mb-4 text-gray-800">Call Planning Checklist</h1>
+    <p class="lead text-muted">Ensure comprehensive preparation for your HCP interactions with this step-by-step checklist.</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-4 mb-4">
+    <div class="card shadow">
+      <div class="card-header py-3 d-flex justify-content-between align-items-center">
+        <h6 class="m-0 font-weight-bold text-primary">Upcoming Call Details</h6>
+        <button class="btn btn-sm btn-outline-primary">
+          <i class="fas fa-edit me-1"></i> Edit
+        </button>
+      </div>
+      <div class="card-body">
+        <div class="mb-4">
+          <h5 class="mb-3">HCP Information</h5>
+          <div class="d-flex align-items-center mb-3">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Dr. Sarah Chen" class="rounded-circle me-3" style="width: 60px; height: 60px;">
+            <div>
+              <h6 class="mb-1">Dr. Sarah Chen</h6>
+              <p class="mb-0 text-muted small">Breast Cancer Specialist</p>
+              <p class="mb-0 text-muted small">Memorial Sloan Kettering Cancer Center</p>
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="small text-muted">Priority Level:</span>
+              <span class="badge bg-primary">High</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="small text-muted">Last Contact:</span>
+              <span class="small">March 15, 2023</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="small text-muted">Engagement Type:</span>
+              <span class="small">Clinical Trial Data Review</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-4">
+          <h5 class="mb-3">Call Details</h5>
+          <div class="mb-2">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="small text-muted"><i class="far fa-calendar me-2"></i>Date:</span>
+              <span class="small">April 12, 2023</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="small text-muted"><i class="far fa-clock me-2"></i>Time:</span>
+              <span class="small">2:00 PM - 3:00 PM EST</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="small text-muted"><i class="fas fa-map-marker-alt me-2"></i>Location:</span>
+              <span class="small">Virtual (Zoom)</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="small text-muted"><i class="fas fa-link me-2"></i>Meeting Link:</span>
+              <a href="#" class="small">Join Meeting</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="alert alert-info small">
+          <i class="fas fa-lightbulb me-2"></i> <strong>Reminder:</strong> Dr. Chen prefers data-driven discussions with a focus on patient outcomes. Come prepared with the latest subgroup analyses.
+        </div>
+      </div>
+    </div>
+    
+    <div class="card shadow mt-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Progress</h6>
+      </div>
+      <div class="card-body">
+        <div class="progress mb-3">
+          <div class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="checklistProgress"></div>
+        </div>
+        <p class="text-center mb-0" id="progressText">0 of 15 tasks completed (0%)</p>
+        
+        <div class="text-center mt-3">
+          <button class="btn btn-sm btn-outline-primary me-2" id="saveProgress">
+            <i class="fas fa-save me-1"></i> Save Progress
+          </button>
+          <button class="btn btn-sm btn-outline-secondary" id="resetChecklist">
+            <i class="fas fa-redo-alt me-1"></i> Reset
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-lg-8">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3 d-flex justify-content-between align-items-center">
+        <h6 class="m-0 font-weight-bold text-primary">Pre-Call Checklist</h6>
+        <div>
+          <button class="btn btn-sm btn-outline-success me-2">
+            <i class="fas fa-print me-1"></i> Print
+          </button>
+          <button class="btn btn-sm btn-outline-primary">
+            <i class="fas fa-share-alt me-1"></i> Share
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="checklist-section mb-4">
+          <h5 class="mb-3">1. HCP Research & Profile Review</h5>
+          <div class="checklist-item">
+            <input type="checkbox" class="form-check-input checklist-checkbox" id="check1">
+            <div class="checklist-text">
+              <label class="form-check-label" for="check1">Review HCP profile, specialties, and areas of interest</label>
+              <p class="text-muted small mb-0">Understand Dr. Chen's focus on breast cancer and immunotherapy combinations</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" class="form-check-input checklist-checkbox" id="check2">
+            <div class="checklist-text">
+              <label class="form-check-label" for="check2">Research recent publications and presentations</label>
+              <p class="text-muted small mb-0">Check Dr. Chen's publications in Journal of Clinical Oncology and recent ASCO presentations</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" class="form-check-input checklist-checkbox" id="check3">
+            <div class="checklist-text">
+              <label class="form-check-label" for="check3">Review previous interaction notes and follow-up items</label>
+              <p class="text-muted small mb-0">Check notes from March 15 call regarding patient subgroup data</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="checklist-section mb-4">
+          <h5 class="mb-3">2. Content Preparation</h5>
+          <div class="checklist-item">
+            <input type="checkbox" class="form-check-input checklist-checkbox" id="check4">
+            <div class="checklist-text">
+              <label class="form-check-label" for="check4">Prepare and review scientific content and clinical data</label>
+              <p class="text-muted small mb-0">Focus on Phase III trial data with subgroup analyses</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" class="form-check-input checklist-checkbox" id="check5">
+            <div class="checklist-text">
+              <label class="form-check-label" for="check5">Prepare visual aids or presentations as needed</label>
+              <p class="text-muted small mb-0">Use approved slide deck on efficacy in brain metastases subgroup</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" class="form-check-input checklist-checkbox" id="check6">
+            <div class="checklist-text">
+              <label class="form-check-label" for="check6">Review product package insert and safety information</label>
+              <p class="text-muted small mb-0">Be prepared to discuss management of key adverse events</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" class="form-check-input checklist-checkbox" id="check7">
+            <div class="checklist-text">
+              <label class="form-check-label" for="check7">Prepare answers to potential objections or difficult questions</label>
+              <p class="text-muted small mb-0">Address previous concerns about drug interactions and cardiac monitoring</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="checklist-section mb-4">
+          <h5 class="mb-3">3. Strategic Planning</h5>
+          <div class="checklist-item">
+            <input type="checkbox" class="form-check-input checklist-checkbox" id="check8">
+            <div class="checklist-text">
+              <label class="form-check-label" for="check8">Define clear objectives for the meeting</label>
+              <p class="text-muted small mb-0">Share new clinical data and discuss potential investigator-initiated trial</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" class="form-check-input checklist-checkbox" id="check9">
+            <div class="checklist-text">
+              <label class="form-check-label" for="check9">Create a meeting agenda with timing</label>
+              <p class="text-muted small mb-0">Structure the 60-minute meeting with time for questions</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" class="form-check-input checklist-checkbox" id="check10">
+            <div class="checklist-text">
+              <label class="form-check-label" for="check10">Identify key talking points and next best dialogue</label>
+              <p class="text-muted small mb-0">Prepare scientific narrative based on HCP's interests</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="checklist-section mb-4">
+          <h5 class="mb-3">4. Logistics & Compliance</h5>
+          <div class="checklist-item">
+            <input type="checkbox" class="form-check-input checklist-checkbox" id="check11">
+            <div class="checklist-text">
+              <label class="form-check-label" for="check11">Confirm meeting details (date, time, location/platform)</label>
+              <p class="text-muted small mb-0">Send calendar invite with Zoom link and agenda</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" class="form-check-input checklist-checkbox" id="check12">
+            <div class="checklist-text">
+              <label class="form-check-label" for="check12">Review compliance guidelines for engagement type</label>
+              <p class="text-muted small mb-0">Ensure all materials are approved for use with HCPs</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" class="form-check-input checklist-checkbox" id="check13">
+            <div class="checklist-text">
+              <label class="form-check-label" for="check13">Prepare for virtual meeting technology needs</label>
+              <p class="text-muted small mb-0">Test Zoom connection, screen sharing, and presentation mode</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="checklist-section">
+          <h5 class="mb-3">5. Follow-Up Planning</h5>
+          <div class="checklist-item">
+            <input type="checkbox" class="form-check-input checklist-checkbox" id="check14">
+            <div class="checklist-text">
+              <label class="form-check-label" for="check14">Prepare template for post-call notes and action items</label>
+              <p class="text-muted small mb-0">Create structure for documenting key discussion points</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" class="form-check-input checklist-checkbox" id="check15">
+            <div class="checklist-text">
+              <label class="form-check-label" for="check15">Plan potential follow-up materials or next steps</label>
+              <p class="text-muted small mb-0">Prepare to send additional patient subgroup data if requested</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize checklist functionality
+    const checklistItems = document.querySelectorAll('.checklist-checkbox');
+    const progressBar = document.getElementById('checklistProgress');
+    const progressText = document.getElementById('progressText');
+    const saveProgressBtn = document.getElementById('saveProgress');
+    const resetChecklistBtn = document.getElementById('resetChecklist');
+    
+    // Update progress bar and text
+    function updateProgress() {
+      const totalItems = checklistItems.length;
+      const completedItems = document.querySelectorAll('.checklist-checkbox:checked').length;
+      const percentage = Math.round((completedItems / totalItems) * 100);
+      
+      progressBar.style.width = `${percentage}%`;
+      progressBar.setAttribute('aria-valuenow', percentage);
+      progressText.textContent = `${completedItems} of ${totalItems} tasks completed (${percentage}%)`;
+    }
+    
+    // Add event listeners to checklist items
+    checklistItems.forEach(item => {
+      item.addEventListener('change', function() {
+        const listItem = this.closest('.checklist-item');
+        if (this.checked) {
+          listItem.classList.add('completed');
+        } else {
+          listItem.classList.remove('completed');
+        }
+        
+        updateProgress();
+      });
+    });
+    
+    // Save progress button
+    if (saveProgressBtn) {
+      saveProgressBtn.addEventListener('click', function() {
+        // In a real app, this would save to database
+        alert('Progress saved successfully!');
+      });
+    }
+    
+    // Reset checklist button
+    if (resetChecklistBtn) {
+      resetChecklistBtn.addEventListener('click', function() {
+        if (confirm('Are you sure you want to reset all checklist items?')) {
+          checklistItems.forEach(item => {
+            item.checked = false;
+            item.closest('.checklist-item').classList.remove('completed');
+          });
+          updateProgress();
+        }
+      });
+    }
+    
+    // Initialize progress
+    updateProgress();
+  });
+</script> 

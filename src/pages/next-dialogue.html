@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Next Best Dialogue - MSL Precall Planning</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link href="../../css/styles.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-white" id="sidebar-wrapper">
+    <div class="sidebar-heading">
+      <i class="fas fa-briefcase-medical me-2"></i>MSL PRECALL PLANNING
+    </div>
+    
+    <a href="../../index.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-chart-line"></i>Dashboard
+    </a>
+    
+    <div class="sidebar-heading">PLANNING TOOLS</div>
+    <a href="meeting-objectives.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-bullseye"></i>Meeting Objectives
+    </a>
+    <a href="call-checklist.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-tasks"></i>Call Planning Checklist
+    </a>
+    <a href="next-dialogue.html" class="list-group-item list-group-item-action active">
+      <i class="fas fa-comments"></i>Next Best Dialogue
+    </a>
+    
+    <div class="sidebar-heading">INTELLIGENCE TOOLS</div>
+    <a href="learn-from-hcp.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-user-md"></i>Learn from HCP
+    </a>
+    <a href="competitive-intel.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-chess"></i>Competitive Intelligence
+    </a>
+    <a href="pdf-summarizer.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-file-pdf"></i>PDF Summarizer
+    </a>
+  </div>
+  
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+      <div class="container-fluid">
+        <button class="btn btn-sm" id="sidebarToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell me-1 position-relative">
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    3+
+                    <span class="visually-hidden">unread notifications</span>
+                  </span>
+                </i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">New trial results for Product X</a>
+                <a class="dropdown-item" href="#">Dr. Smith updated preferences</a>
+                <a class="dropdown-item" href="#">Upcoming conference reminder</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">View all notifications</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user-circle me-1"></i> John Wilson
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a>
+                <a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid p-4">
+      <!-- Page heading -->
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <div>
+          <h1 class="h3 mb-0 text-gray-800">Next Best Dialogue</h1>
+          <p class="lead text-muted">Generate AI-powered talking points and prepare for anticipated questions from HCPs.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Dialogue Settings</h6>
+            </div>
+            <div class="card-body">
+              <form id="dialogueForm">
+                <div class="mb-3">
+                  <label for="hcpSelect" class="form-label">Healthcare Provider</label>
+                  <select class="form-select" id="hcpSelect">
+                    <option selected value="sarah-chen">Dr. Sarah Chen</option>
+                    <option value="james-wilson">Dr. James Wilson</option>
+                    <option value="emily-rodriguez">Dr. Emily Rodriguez</option>
+                    <option value="robert-patel">Dr. Robert Patel</option>
+                    <option value="custom">Other (Custom)</option>
+                  </select>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="topicSelect" class="form-label">Discussion Topic</label>
+                  <select class="form-select" id="topicSelect">
+                    <option selected value="clinical-data">Clinical Trial Data</option>
+                    <option value="safety-profile">Safety Profile</option>
+                    <option value="moa">Mechanism of Action</option>
+                    <option value="patient-selection">Patient Selection</option>
+                    <option value="comparators">Competitive Landscape</option>
+                    <option value="research">Research Collaboration</option>
+                    <option value="custom">Other (Custom)</option>
+                  </select>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="productSelect" class="form-label">Product</label>
+                  <select class="form-select" id="productSelect">
+                    <option selected value="drug-x">Drug X (Breast Cancer)</option>
+                    <option value="drug-y">Drug Y (Hematologic Malignancies)</option>
+                    <option value="drug-z">Drug Z (Solid Tumors)</option>
+                    <option value="pipeline">Early Pipeline Assets</option>
+                  </select>
+                </div>
+                
+                <div class="mb-3">
+                  <label class="form-label">Include Sections</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="includeKey" checked>
+                    <label class="form-check-label" for="includeKey">
+                      Key Talking Points
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="includeData" checked>
+                    <label class="form-check-label" for="includeData">
+                      Supporting Data
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="includeQuestions" checked>
+                    <label class="form-check-label" for="includeQuestions">
+                      Anticipated Questions
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="includeObjections" checked>
+                    <label class="form-check-label" for="includeObjections">
+                      Objection Handling
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="customNotes" class="form-label">Additional Context (optional)</label>
+                  <textarea class="form-control" id="customNotes" rows="3" placeholder="Add any specific information about the HCP, their interests, or recent conversations..."></textarea>
+                </div>
+                
+                <button type="button" class="btn btn-primary w-100" id="generateDialogueBtn">
+                  <i class="fas fa-magic me-2"></i> Generate Dialogue Points
+                </button>
+              </form>
+            </div>
+          </div>
+          
+          <div class="card shadow">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Recently Used</h6>
+            </div>
+            <div class="card-body p-0">
+              <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action py-3">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">Clinical Efficacy - Dr. Chen</h6>
+                    <small class="text-muted">Yesterday</small>
+                  </div>
+                  <small class="text-muted">Drug X • Clinical Trial Data</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action py-3">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">Safety Profile - Dr. Wilson</h6>
+                    <small class="text-muted">3 days ago</small>
+                  </div>
+                  <small class="text-muted">Drug X • Safety Profile</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action py-3">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">IIT Collaboration - Dr. Rodriguez</h6>
+                    <small class="text-muted">Last week</small>
+                  </div>
+                  <small class="text-muted">Drug Y • Research Collaboration</small>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-8">
+          <div class="card shadow">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+              <h6 class="m-0 font-weight-bold text-primary">Generated Dialogue Points</h6>
+              <div>
+                <button class="btn btn-sm btn-outline-primary me-2 disabled" id="copyBtn">
+                  <i class="fas fa-copy me-1"></i> Copy
+                </button>
+                <button class="btn btn-sm btn-outline-primary me-2 disabled" id="downloadBtn">
+                  <i class="fas fa-download me-1"></i> Download
+                </button>
+                <button class="btn btn-sm btn-outline-success disabled" id="saveTalkingPoints">
+                  <i class="fas fa-save me-1"></i> Save
+                </button>
+              </div>
+            </div>
+            <div class="card-body" id="dialogueResults">
+              <div class="text-center py-5">
+                <img src="https://cdn.iconscout.com/icon/free/png-256/free-chat-bubble-3605059-3003693.png?f=webp" alt="Dialogue Icon" style="width: 80px; opacity: 0.2;" class="mb-4">
+                <h4 class="mb-3 text-muted">No Dialogue Points Generated Yet</h4>
+                <p class="text-muted">Configure your settings and click "Generate Dialogue Points" to get started.</p>
+                <p class="text-muted small">Our AI will analyze HCP profiles, clinical data, and previous interactions to suggest the most effective talking points.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sample content to be used by JavaScript -->
+      <div class="d-none" id="sampleDialogue">
+        <div class="mb-4">
+          <h5 class="border-bottom pb-2"><i class="fas fa-comment-dots text-primary me-2"></i>Key Talking Points for Dr. Sarah Chen</h5>
+          
+          <div class="dialogue-point p-3 bg-light rounded mb-3">
+            <h6 class="mb-2"><strong>1. Efficacy in Brain Metastases Subgroup</strong></h6>
+            <p>Our Phase III trial demonstrated a 58% reduction in risk of progression specifically in patients with brain metastases (HR 0.42, 95% CI 0.31-0.57). This is particularly relevant given Dr. Chen's focus on this difficult-to-treat population.</p>
+            <div class="suggested-dialogue mt-2 p-2 border-start border-primary border-3 ps-3">
+              <p class="mb-1 text-primary"><strong>Suggested Dialogue:</strong></p>
+              <p class="mb-0">"I wanted to highlight our recent subgroup analysis showing Drug X's efficacy in patients with brain metastases, which I know is an area of interest for you. The data showed a 58% reduction in progression risk compared to standard of care, with a hazard ratio of 0.42. Would you like to discuss these findings in more detail?"</p>
+            </div>
+          </div>
+          
+          <div class="dialogue-point p-3 bg-light rounded mb-3">
+            <h6 class="mb-2"><strong>2. Updated Cardiac Monitoring Requirements</strong></h6>
+            <p>Based on our long-term safety data, cardiac monitoring requirements have been simplified to baseline and 3-month assessments for most patients, addressing a key concern Dr. Chen raised in previous discussions.</p>
+            <div class="suggested-dialogue mt-2 p-2 border-start border-primary border-3 ps-3">
+              <p class="mb-1 text-primary"><strong>Suggested Dialogue:</strong></p>
+              <p class="mb-0">"You previously mentioned concerns about the cardiac monitoring burden for patients. I'm pleased to share that our long-term safety data has allowed us to simplify the monitoring protocol to just baseline and 3-month assessments for most patients, which should significantly reduce the burden on both patients and clinical staff."</p>
+            </div>
+          </div>
+          
+          <div class="dialogue-point p-3 bg-light rounded mb-3">
+            <h6 class="mb-2"><strong>3. Biomarker Analysis and Patient Selection</strong></h6>
+            <p>Recent biomarker analyses have identified a subset of patients with BRCA1/2 mutations who show enhanced response (ORR 68% vs 47% in overall population), which aligns with Dr. Chen's research in precision medicine approaches.</p>
+            <div class="suggested-dialogue mt-2 p-2 border-start border-primary border-3 ps-3">
+              <p class="mb-1 text-primary"><strong>Suggested Dialogue:</strong></p>
+              <p class="mb-0">"Our biomarker analysis revealed that patients with BRCA1/2 mutations showed particularly strong responses to Drug X, with an ORR of 68% compared to 47% in the overall population. Given your work in precision medicine, I thought you might find these results interesting. Could this information help guide your patient selection decisions?"</p>
+            </div>
+          </div>
+          
+          <div class="dialogue-point p-3 bg-light rounded">
+            <h6 class="mb-2"><strong>4. Potential for Investigator-Initiated Trial</strong></h6>
+            <p>There is an opportunity to discuss collaboration on an IIT exploring Drug X in combination with immunotherapy agents, which fits with both Dr. Chen's research interests and MSKCC's strategic priorities.</p>
+            <div class="suggested-dialogue mt-2 p-2 border-start border-primary border-3 ps-3">
+              <p class="mb-1 text-primary"><strong>Suggested Dialogue:</strong></p>
+              <p class="mb-0">"We're currently exploring combinations of Drug X with various immunotherapy agents, and I know this aligns with some of your research interests. Would you be interested in discussing potential collaboration opportunities for an investigator-initiated trial in this area? We have resources available to support such initiatives."</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-4">
+          <h5 class="border-bottom pb-2"><i class="fas fa-chart-bar text-primary me-2"></i>Supporting Data</h5>
+          
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h6 class="card-title">Brain Metastases Subgroup</h6>
+                  <ul class="small">
+                    <li>HR 0.42 (95% CI 0.31-0.57), p<0.001</li>
+                    <li>mPFS: 9.8 months vs 4.2 months</li>
+                    <li>Intracranial ORR: 42% vs 18%</li>
+                    <li>Duration of intracranial response: 8.4 months</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h6 class="card-title">Cardiac Monitoring Data</h6>
+                  <ul class="small">
+                    <li>Grade 3-4 cardiac events: 2.1% vs 1.8% (placebo)</li>
+                    <li>Median time to cardiac event: 4.2 months</li>
+                    <li>Risk factors: Prior anthracycline, pre-existing conditions</li>
+                    <li>99% of events detected at baseline or 3-month assessment</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h6 class="card-title">Biomarker Analysis</h6>
+                  <ul class="small">
+                    <li>BRCA1/2 mutated: ORR 68% (95% CI 59-76%)</li>
+                    <li>HRD-positive: ORR 54% (95% CI 47-61%)</li>
+                    <li>BRCA1/2 wild-type: ORR 38% (95% CI 31-45%)</li>
+                    <li>Biomarker testing available through central lab</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h6 class="card-title">IIT Program Details</h6>
+                  <ul class="small">
+                    <li>Drug supply available for approved protocols</li>
+                    <li>Grant funding up to $250,000</li>
+                    <li>Priority areas: IO combinations, novel biomarkers</li>
+                    <li>Expedited review process (4-6 weeks)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-4">
+          <h5 class="border-bottom pb-2"><i class="fas fa-question-circle text-primary me-2"></i>Anticipated Questions</h5>
+          
+          <div class="card mb-3">
+            <div class="card-header bg-light">
+              <strong>Q: How does Drug X compare to [Competitor Drug] that recently published positive Phase III data?</strong>
+            </div>
+            <div class="card-body">
+              <p>While we can't make direct cross-trial comparisons, our efficacy data appears robust in the context of the treatment landscape. In particular, our brain metastases data is unprecedented, with a 58% reduction in progression risk versus 35% reported for [Competitor Drug]. It's also worth noting that our safety profile shows lower rates of grade 3-4 neutropenia (22% vs 35%) and discontinuation rates (7% vs 12%).</p>
+            </div>
+          </div>
+          
+          <div class="card mb-3">
+            <div class="card-header bg-light">
+              <strong>Q: Is biomarker testing required before prescribing Drug X?</strong>
+            </div>
+            <div class="card-body">
+              <p>Biomarker testing is not required for Drug X, as we saw benefit across all patient subgroups. However, our data suggests enhanced benefit in patients with BRCA1/2 mutations and those who are HRD-positive. We offer a testing program that provides results within 7-10 days if you're interested in identifying those patients who might derive the greatest benefit.</p>
+            </div>
+          </div>
+          
+          <div class="card mb-3">
+            <div class="card-header bg-light">
+              <strong>Q: What's the optimal sequencing of Drug X with other therapies like CDK4/6 inhibitors?</strong>
+            </div>
+            <div class="card-body">
+              <p>Our trial included patients who had progressed on CDK4/6 inhibitors, and the benefit was maintained in this population (HR 0.61, 95% CI 0.49-0.76). We don't have data on the reverse sequence yet. There's also an ongoing trial looking at the combination of Drug X with CDK4/6 inhibitors in first-line metastatic disease, with preliminary data expected later this year.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-4">
+          <h5 class="border-bottom pb-2"><i class="fas fa-shield-alt text-primary me-2"></i>Objection Handling</h5>
+          
+          <div class="accordion" id="objectionAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="objection1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <strong>Objection: "The cardiac monitoring requirements still seem burdensome compared to alternatives."</strong>
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="objection1" data-bs-parent="#objectionAccordion">
+                <div class="accordion-body">
+                  <p><strong>Response approach:</strong> Acknowledge concern, highlight recent simplification, compare to alternatives, offer support</p>
+                  <p><strong>Key points:</strong></p>
+                  <ul>
+                    <li>Recent protocol update reduced monitoring frequency from quarterly to baseline and 3-month only for most patients</li>
+                    <li>99% of cardiac events were detected at these timepoints in our long-term safety study</li>
+                    <li>Compared to [Competitor Drug] requiring monthly monitoring for the first 6 months</li>
+                    <li>Our patient support program can help coordinate cardiac monitoring appointments</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="objection2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <strong>Objection: "The benefit doesn't seem worth the added toxicity compared to standard of care."</strong>
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="objection2" data-bs-parent="#objectionAccordion">
+                <div class="accordion-body">
+                  <p><strong>Response approach:</strong> Focus on risk-benefit profile, highlight quality of life data, discuss patient selection</p>
+                  <p><strong>Key points:</strong></p>
+                  <ul>
+                    <li>While grade 3-4 AEs were increased (35% vs 28%), the majority were manageable with dose modifications</li>
+                    <li>QoL data showed maintained or improved scores from baseline in the treatment arm</li>
+                    <li>Biomarker analysis can help identify patients most likely to benefit</li>
+                    <li>In difficult-to-treat populations like brain metastases, the increased PFS of 5.6 months represents meaningful clinical benefit</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="objection3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <strong>Objection: "Drug X hasn't shown overall survival benefit yet, so why should I change practice?"</strong>
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="objection3" data-bs-parent="#objectionAccordion">
+                <div class="accordion-body">
+                  <p><strong>Response approach:</strong> Discuss OS data maturity, highlight current trends, focus on PFS as valid endpoint, reference guidelines</p>
+                  <p><strong>Key points:</strong></p>
+                  <ul>
+                    <li>OS data is maturing but current trend is positive (HR 0.78, 95% CI 0.61-1.02)</li>
+                    <li>PFS is a validated surrogate endpoint in metastatic breast cancer and has been used for previous approvals</li>
+                    <li>NCCN guidelines now include Drug X as a category 1 recommendation based on PFS data</li>
+                    <li>Final OS analysis expected in Q3 2023 with interim analysis suggesting positive trend</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="alert alert-info mb-0">
+          <i class="fas fa-lightbulb me-2"></i> <strong>Pro Tip:</strong> Based on Dr. Chen's publication history, she is particularly interested in biomarker-driven approaches. Consider emphasizing the BRCA1/2 and HRD data early in your conversation, as this aligns with her research focus.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Toggle the side navigation
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.body.classList.toggle('sb-sidenav-toggled');
+      });
+    }
+    
+    // Get references to DOM elements
+    const dialogueForm = document.getElementById('dialogueForm');
+    const generateDialogueBtn = document.getElementById('generateDialogueBtn');
+    const dialogueResults = document.getElementById('dialogueResults');
+    const copyBtn = document.getElementById('copyBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const saveTalkingPoints = document.getElementById('saveTalkingPoints');
+    
+    // Generate dialogue button
+    if (generateDialogueBtn) {
+      generateDialogueBtn.addEventListener('click', function() {
+        // Show loading state
+        dialogueResults.innerHTML = `
+          <div class="text-center py-5">
+            <div class="spinner-border text-primary mb-3" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <h4 class="mb-3 text-muted">Generating Dialogue Points...</h4>
+            <p class="text-muted">This may take a few moments.</p>
+          </div>
+        `;
+        
+        // Enable control buttons
+        copyBtn.classList.remove('disabled');
+        downloadBtn.classList.remove('disabled');
+        saveTalkingPoints.classList.remove('disabled');
+        
+        // Simulate API call delay
+        setTimeout(() => {
+          // Replace with sample dialogue content
+          dialogueResults.innerHTML = document.getElementById('sampleDialogue').innerHTML;
+        }, 2000);
+      });
+    }
+    
+    // Copy button
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function() {
+        const range = document.createRange();
+        range.selectNode(dialogueResults);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        
+        // Show success message
+        alert('Dialogue points copied to clipboard!');
+      });
+    }
+    
+    // Download button
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', function() {
+        // In a real app, this would generate a PDF or Word doc
+        alert('Downloading dialogue points...');
+      });
+    }
+    
+    // Save button
+    if (saveTalkingPoints) {
+      saveTalkingPoints.addEventListener('click', function() {
+        // In a real app, this would save to database
+        alert('Talking points saved successfully!');
+      });
+    }
+  });
+</script>
+</body>
+</html> 

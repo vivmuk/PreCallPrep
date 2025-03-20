@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Call Planning Checklist - MSL Precall Planning</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link href="../../css/styles.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-white" id="sidebar-wrapper">
+    <div class="sidebar-heading">
+      <i class="fas fa-briefcase-medical me-2"></i>MSL PRECALL PLANNING
+    </div>
+    
+    <a href="../../index.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-chart-line"></i>Dashboard
+    </a>
+    
+    <div class="sidebar-heading">PLANNING TOOLS</div>
+    <a href="meeting-objectives.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-bullseye"></i>Meeting Objectives
+    </a>
+    <a href="call-checklist.html" class="list-group-item list-group-item-action active">
+      <i class="fas fa-tasks"></i>Call Planning Checklist
+    </a>
+    <a href="next-dialogue.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-comments"></i>Next Best Dialogue
+    </a>
+    
+    <div class="sidebar-heading">INTELLIGENCE TOOLS</div>
+    <a href="learn-from-hcp.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-user-md"></i>Learn from HCP
+    </a>
+    <a href="competitive-intel.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-chess"></i>Competitive Intelligence
+    </a>
+    <a href="pdf-summarizer.html" class="list-group-item list-group-item-action">
+      <i class="fas fa-file-pdf"></i>PDF Summarizer
+    </a>
+  </div>
+  
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+      <div class="container-fluid">
+        <button class="btn btn-sm" id="sidebarToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell me-1 position-relative">
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    3+
+                    <span class="visually-hidden">unread notifications</span>
+                  </span>
+                </i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">New trial results for Product X</a>
+                <a class="dropdown-item" href="#">Dr. Smith updated preferences</a>
+                <a class="dropdown-item" href="#">Upcoming conference reminder</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">View all notifications</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user-circle me-1"></i> John Wilson
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a>
+                <a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid p-4">
+      <!-- Page heading -->
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <div>
+          <h1 class="h3 mb-0 text-gray-800">Call Planning Checklist</h1>
+          <p class="lead text-muted">Ensure thorough preparation for your HCP engagements with a comprehensive checklist.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Left Column - Create New Checklist -->
+        <div class="col-xl-4 col-lg-5">
+          <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h6 class="m-0 font-weight-bold text-primary">Create New Checklist</h6>
+              <div class="dropdown no-arrow">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                  <div class="dropdown-header">Templates:</div>
+                  <a class="dropdown-item" href="#" id="templateStandard">Standard Visit</a>
+                  <a class="dropdown-item" href="#" id="templateKOL">KOL Engagement</a>
+                  <a class="dropdown-item" href="#" id="templateConference">Conference Follow-up</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#" id="clearForm">Clear Form</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form id="checklistForm">
+                <div class="mb-3">
+                  <label for="hcpSelect" class="form-label">Healthcare Provider</label>
+                  <select class="form-select" id="hcpSelect">
+                    <option selected value="none">Select HCP...</option>
+                    <option value="sarah-chen">Dr. Sarah Chen</option>
+                    <option value="james-wilson">Dr. James Wilson</option>
+                    <option value="emily-rodriguez">Dr. Emily Rodriguez</option>
+                    <option value="robert-patel">Dr. Robert Patel</option>
+                    <option value="custom">Other (Custom)</option>
+                  </select>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="visitDate" class="form-label">Visit Date</label>
+                  <input type="date" class="form-control" id="visitDate">
+                </div>
+                
+                <div class="mb-3">
+                  <label for="visitType" class="form-label">Visit Type</label>
+                  <select class="form-select" id="visitType">
+                    <option selected value="standard">Standard Visit</option>
+                    <option value="introductory">Introductory Meeting</option>
+                    <option value="data-review">Data Review</option>
+                    <option value="conference-followup">Conference Follow-up</option>
+                    <option value="iit-discussion">IIT Discussion</option>
+                    <option value="virtual">Virtual Meeting</option>
+                  </select>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="objectives" class="form-label">Meeting Objectives</label>
+                  <textarea class="form-control" id="objectives" rows="3" placeholder="What do you aim to accomplish in this meeting?"></textarea>
+                </div>
+                
+                <button type="button" class="btn btn-primary w-100" id="generateChecklistBtn">
+                  <i class="fas fa-list-check me-2"></i> Generate Checklist
+                </button>
+              </form>
+            </div>
+          </div>
+          
+          <!-- Recent Checklists Card -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Recent Checklists</h6>
+            </div>
+            <div class="card-body p-0">
+              <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action py-3">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">Dr. Sarah Chen</h6>
+                    <small class="text-muted">Tomorrow</small>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">Standard Visit • 14 items</small>
+                    <span class="badge bg-warning text-dark">In Progress</span>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action py-3">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">Dr. James Wilson</h6>
+                    <small class="text-muted">Yesterday</small>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">Data Review • 18 items</small>
+                    <span class="badge bg-success">Completed</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right Column - Active Checklist -->
+        <div class="col-xl-8 col-lg-7">
+          <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+              <h6 class="m-0 font-weight-bold text-primary">Call Planning for Dr. Sarah Chen</h6>
+              <div>
+                <button class="btn btn-sm btn-outline-primary me-2">
+                  <i class="fas fa-expand-arrows-alt me-1"></i> Expand All
+                </button>
+                <button class="btn btn-sm btn-outline-primary me-2">
+                  <i class="fas fa-print me-1"></i> Print
+                </button>
+                <button class="btn btn-sm btn-outline-success">
+                  <i class="fas fa-save me-1"></i> Save
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="checklist-section mb-4">
+                <h5 class="mb-3">Pre-Call Planning</h5>
+                <div class="list-group">
+                  <div class="list-group-item">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="check1">
+                      <label class="form-check-label" for="check1">
+                        Review HCP profile and previous interactions
+                      </label>
+                    </div>
+                  </div>
+                  <div class="list-group-item">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="check2">
+                      <label class="form-check-label" for="check2">
+                        Check recent publications and research interests
+                      </label>
+                    </div>
+                  </div>
+                  <div class="list-group-item">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="check3">
+                      <label class="form-check-label" for="check3">
+                        Prepare relevant clinical data and materials
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="checklist-section mb-4">
+                <h5 class="mb-3">Meeting Materials</h5>
+                <div class="list-group">
+                  <div class="list-group-item">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="check4">
+                      <label class="form-check-label" for="check4">
+                        Clinical trial data presentations
+                      </label>
+                    </div>
+                  </div>
+                  <div class="list-group-item">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="check5">
+                      <label class="form-check-label" for="check5">
+                        Safety information and updates
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="checklist-section">
+                <h5 class="mb-3">Follow-up Items</h5>
+                <div class="list-group">
+                  <div class="list-group-item">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="check6">
+                      <label class="form-check-label" for="check6">
+                        Schedule next meeting date
+                      </label>
+                    </div>
+                  </div>
+                  <div class="list-group-item">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="check7">
+                      <label class="form-check-label" for="check7">
+                        Document key discussion points
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Toggle the side navigation
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.body.classList.toggle('sb-sidenav-toggled');
+      });
+    }
+  });
+</script>
+</body>
+</html> 
