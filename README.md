@@ -1,91 +1,60 @@
 # MSL Precall Planning Platform
 
-An AI-powered platform for Medical Science Liaisons to prepare for healthcare provider engagements, powered by the Venice AI API.
+An AI-powered platform for Medical Science Liaison precall planning.
 
 ## Overview
 
-This platform helps Medical Science Liaisons (MSLs) prepare effectively for healthcare provider (HCP) interactions by providing tools for:
-
-- Meeting objectives planning
-- Call checklists
-- Next best dialogue generation
-- HCP insights through AI-powered conversations
-- Competitive & market intelligence
-- Scientific document summarization
+This application provides Medical Science Liaisons (MSLs) with tools to prepare for their interactions with Healthcare Professionals (HCPs). It includes features like PDF summarization, call planning checklists, and competitive intelligence gathering.
 
 ## Features
 
-- **Dashboard**: Overview of upcoming engagements, recent activities, and quick actions
-- **Meeting Objectives**: Define and structure objectives for HCP interactions
-- **Call Planning Checklist**: Comprehensive checklists for pre-call preparation
-- **Next Best Dialogue**: AI-generated talking points for effective communication
-- **Learn from HCP**: AI-powered conversations to gather insights from HCPs
-- **Competitive Intelligence**: Market data and competitor analysis
-- **PDF Summarizer**: AI-powered scientific document summarization
+- PDF Summarizer with audio review capability
+- Meeting Objectives planning
+- Call Planning Checklists
+- Next Best Dialogue suggestions
+- Learning from HCP interactions
+- Competitive Intelligence dashboard
 
-## Getting Started
+## Local Development
 
-### Prerequisites
+To run this project locally:
 
-- Node.js 14+ installed
-- Web browser (Chrome, Firefox, Edge recommended)
-
-### Installation
-
-1. Clone this repository
+1. Clone the repository
 2. Install dependencies:
    ```
    npm install
    ```
-3. Start the development server:
+3. Start the local development server:
    ```
    npm start
    ```
-4. Open your browser and navigate to `http://localhost:8000`
+4. Open your browser to `http://localhost:8000`
 
-## API Integration
+## Deploying to Netlify
 
-This platform integrates with the Venice AI API for AI-powered features:
+This project is configured for deployment on Netlify. To deploy:
 
-- Chat completions for dialogue generation
-- Document summarization
-- Image generation (for visualizations)
+1. Push your code to a Git repository (GitHub, GitLab, or Bitbucket)
+2. Create a new site on Netlify and connect to your repository
+3. Netlify will automatically detect the build settings from the netlify.toml file
 
-The API key is configured in `src/api/venice.js`. If you need to update it, replace the existing key with your own.
+### Troubleshooting Netlify Deployment
 
-## File Structure
+If you encounter the error `npm error code ETARGET` for Font Awesome, this has been fixed by:
 
-- `/src`: Source code
-  - `/api`: API integrations
-  - `/pages`: HTML templates for different pages
-  - `index.js`: Main JavaScript file
-- `/css`: Stylesheets
-- `index.html`: Main application file
+1. Updating the package.json to use the correct package name `@fortawesome/fontawesome-free` instead of `font-awesome`
+2. Setting the version to `^6.4.2` which is an available version
+3. Using CDN links in HTML files with integrity hashes for better caching
 
-## Example Workflows
+## Browser Compatibility
 
-### Preparing for an HCP Meeting
+This application is designed to work with:
 
-1. Start on the Dashboard
-2. Select "Plan Meeting" from Quick Actions
-3. Define meeting objectives and agenda
-4. Generate a call checklist
-5. Create next best dialogue points
-6. Review competitive intelligence
-7. Summarize relevant publications
-
-### Summarizing a Scientific Paper
-
-1. Navigate to "PDF Summarizer"
-2. Upload a PDF or use the sample file
-3. Select summary preferences
-4. Click "Generate Summary"
-5. Review and save the AI-generated summary
-
-## Customization
-
-The platform includes sample mock data for demonstration purposes. In a production environment, you would integrate with your organization's data sources.
+- Chrome (latest)
+- Firefox (latest)
+- Edge (latest)
+- Safari (latest)
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+MIT 
