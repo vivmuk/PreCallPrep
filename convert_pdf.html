@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF to Base64 Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #004C54;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #003A40;
+        }
+    </style>
+</head>
+<body>
+    <h2>PDF to Base64 Converter</h2>
+    <input type="file" id="pdfFile" accept=".pdf">
+    <button onclick="convertToBase64()">Convert to Base64</button>
+    <textarea id="base64Output" placeholder="Base64 output will appear here..."></textarea>
+
+    <script>
+        function convertToBase64() {
+            const fileInput = document.getElementById('pdfFile');
+            const file = fileInput.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64String = e.target.result;
+                    document.getElementById('base64Output').value = base64String;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html> 

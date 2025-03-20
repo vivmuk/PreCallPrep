@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSL Precall Planning Platform</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link href="css/styles.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="bg-white" id="sidebar-wrapper">
+      <div class="sidebar-heading">
+        <i class="fas fa-briefcase-medical me-2"></i>MSL PRECALL PLANNING
+      </div>
+      
+      <a href="index.html" class="list-group-item list-group-item-action active">
+        <i class="fas fa-chart-line"></i>Dashboard
+      </a>
+      
+      <div class="sidebar-heading">PLANNING TOOLS</div>
+      <a href="src/pages/meeting-objectives.html" class="list-group-item list-group-item-action">
+        <i class="fas fa-bullseye"></i>Meeting Objectives
+      </a>
+      <a href="src/pages/call-checklist.html" class="list-group-item list-group-item-action">
+        <i class="fas fa-tasks"></i>Call Planning Checklist
+      </a>
+      <a href="src/pages/next-dialogue.html" class="list-group-item list-group-item-action">
+        <i class="fas fa-comments"></i>Next Best Dialogue
+      </a>
+      
+      <div class="sidebar-heading">INTELLIGENCE TOOLS</div>
+      <a href="src/pages/learn-from-hcp.html" class="list-group-item list-group-item-action">
+        <i class="fas fa-user-md"></i>Learn from HCP
+      </a>
+      <a href="src/pages/competitive-intel.html" class="list-group-item list-group-item-action">
+        <i class="fas fa-chess"></i>Competitive Intelligence
+      </a>
+      <a href="src/pages/pdf-summarizer.html" class="list-group-item list-group-item-action">
+        <i class="fas fa-file-pdf"></i>PDF Summarizer
+      </a>
+    </div>
+    
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container-fluid">
+          <button class="btn btn-sm" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+          </button>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-bell me-1 position-relative">
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      3+
+                      <span class="visually-hidden">unread notifications</span>
+                    </span>
+                  </i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">New trial results for Product X</a>
+                  <a class="dropdown-item" href="#">Dr. Smith updated preferences</a>
+                  <a class="dropdown-item" href="#">Upcoming conference reminder</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">View all notifications</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-user-circle me-1"></i> John Wilson
+                </a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                  <a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a>
+                  <a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+      <!-- Main content -->
+      <div class="container-fluid p-4">
+        <!-- Page heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+          <div>
+            <button class="btn btn-sm btn-outline-secondary me-2">
+              <i class="fas fa-download fa-sm text-gray-50"></i> Export Report
+            </button>
+            <button class="btn btn-sm btn-primary">
+              <i class="fas fa-calendar fa-sm text-white"></i> Schedule HCP Visit
+            </button>
+          </div>
+        </div>
+
+        <!-- Content Row - Stats Cards -->
+        <div class="row">
+          <!-- Upcoming Engagements Card -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100">
+              <div class="card-body card-stats">
+                <div class="card-title text-uppercase">Upcoming Engagements</div>
+                <div class="card-value">4</div>
+                <div class="text-end">
+                  <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                </div>
+                <a href="#" class="text-primary small text-decoration-none">View Details <i class="fas fa-arrow-right ms-1"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- HCPs In Territory Card -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100">
+              <div class="card-body card-stats">
+                <div class="card-title text-uppercase">HCPs in Territory</div>
+                <div class="card-value">28</div>
+                <div class="text-end">
+                  <i class="fas fa-user-md fa-2x text-gray-300"></i>
+                </div>
+                <a href="#" class="text-success small text-decoration-none">View HCP Profiles <i class="fas fa-arrow-right ms-1"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Summarized Documents Card -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100">
+              <div class="card-body card-stats">
+                <div class="card-title text-uppercase">Summarized Documents</div>
+                <div class="card-value">12</div>
+                <div class="text-end">
+                  <i class="fas fa-file-alt fa-2x text-gray-300"></i>
+                </div>
+                <a href="src/pages/pdf-summarizer.html" class="text-info small text-decoration-none">View Library <i class="fas fa-arrow-right ms-1"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Saved Insights Card -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100">
+              <div class="card-body card-stats">
+                <div class="card-title text-uppercase">Saved Insights</div>
+                <div class="card-value">18</div>
+                <div class="text-end">
+                  <i class="fas fa-lightbulb fa-2x text-gray-300"></i>
+                </div>
+                <a href="#" class="text-warning small text-decoration-none">View Insights <i class="fas fa-arrow-right ms-1"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Row -->
+        <div class="row">
+          <!-- Upcoming Engagements List -->
+          <div class="col-xl-6 col-lg-6">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Upcoming Engagements</h6>
+                <div class="dropdown no-arrow">
+                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-end shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                    <div class="dropdown-header">Actions:</div>
+                    <a class="dropdown-item" href="#"><i class="fas fa-plus fa-sm fa-fw me-2 text-gray-400"></i>Add New</a>
+                    <a class="dropdown-item" href="#"><i class="fas fa-sync fa-sm fa-fw me-2 text-gray-400"></i>Refresh</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"><i class="fas fa-calendar-alt fa-sm fa-fw me-2 text-gray-400"></i>View Calendar</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>HCP</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="avatar-circle bg-primary text-white me-2">JS</div>
+                            <div>
+                              <div class="fw-bold">Dr. James Smith</div>
+                              <div class="small text-muted">Oncology, Mayo Clinic</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>In-person</td>
+                        <td>Jun 12, 2023</td>
+                        <td><span class="badge bg-planning">Planning</span></td>
+                        <td>
+                          <a href="src/pages/meeting-objectives.html" class="btn btn-sm btn-outline-primary">Prepare</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="avatar-circle bg-success text-white me-2">LC</div>
+                            <div>
+                              <div class="fw-bold">Dr. Lisa Chen</div>
+                              <div class="small text-muted">Hematology, Memorial Sloan</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>Virtual</td>
+                        <td>Jun 15, 2023</td>
+                        <td><span class="badge bg-confirmed">Confirmed</span></td>
+                        <td>
+                          <a href="src/pages/meeting-objectives.html" class="btn btn-sm btn-outline-primary">Prepare</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="avatar-circle bg-info text-white me-2">RJ</div>
+                            <div>
+                              <div class="fw-bold">Dr. Robert Johnson</div>
+                              <div class="small text-muted">Oncology, UCSF</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>In-person</td>
+                        <td>Jun 18, 2023</td>
+                        <td><span class="badge bg-tentative">Tentative</span></td>
+                        <td>
+                          <a href="src/pages/meeting-objectives.html" class="btn btn-sm btn-outline-primary">Prepare</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="avatar-circle bg-secondary text-white me-2">MP</div>
+                            <div>
+                              <div class="fw-bold">Dr. Maria Patel</div>
+                              <div class="small text-muted">Oncology, MD Anderson</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>Conference</td>
+                        <td>Jun 22, 2023</td>
+                        <td><span class="badge bg-confirmed">Confirmed</span></td>
+                        <td>
+                          <a href="src/pages/meeting-objectives.html" class="btn btn-sm btn-outline-primary">Prepare</a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity and Quick Actions -->
+          <div class="col-xl-6 col-lg-6">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Recent Activity</h6>
+              </div>
+              <div class="card-body p-0">
+                <div class="list-group list-group-flush activity-list">
+                  <div class="list-group-item px-4 py-3">
+                    <div class="d-flex w-100 justify-content-between">
+                      <div>
+                        <span class="activity-icon bg-info text-white"><i class="fas fa-file-pdf"></i></span>
+                        <span class="ms-3">Summarized <strong>Brentuximab Vedotin Study</strong></span>
+                      </div>
+                      <small class="text-muted">2 hours ago</small>
+                    </div>
+                  </div>
+                  <div class="list-group-item px-4 py-3">
+                    <div class="d-flex w-100 justify-content-between">
+                      <div>
+                        <span class="activity-icon bg-primary text-white"><i class="fas fa-calendar-check"></i></span>
+                        <span class="ms-3">Scheduled meeting with <strong>Dr. Lisa Chen</strong></span>
+                      </div>
+                      <small class="text-muted">Yesterday</small>
+                    </div>
+                  </div>
+                  <div class="list-group-item px-4 py-3">
+                    <div class="d-flex w-100 justify-content-between">
+                      <div>
+                        <span class="activity-icon bg-success text-white"><i class="fas fa-comments"></i></span>
+                        <span class="ms-3">Generated dialogue points for <strong>Dr. Smith</strong></span>
+                      </div>
+                      <small class="text-muted">2 days ago</small>
+                    </div>
+                  </div>
+                  <div class="list-group-item px-4 py-3">
+                    <div class="d-flex w-100 justify-content-between">
+                      <div>
+                        <span class="activity-icon bg-warning text-white"><i class="fas fa-lightbulb"></i></span>
+                        <span class="ms-3">Saved <strong>3 insights</strong> from chat with KOL</span>
+                      </div>
+                      <small class="text-muted">3 days ago</small>
+                    </div>
+                  </div>
+                  <div class="list-group-item px-4 py-3">
+                    <div class="d-flex w-100 justify-content-between">
+                      <div>
+                        <span class="activity-icon bg-danger text-white"><i class="fas fa-chart-line"></i></span>
+                        <span class="ms-3">Viewed <strong>competitive intelligence</strong> report</span>
+                      </div>
+                      <small class="text-muted">5 days ago</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Actions Card -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Quick Actions</h6>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <a href="src/pages/meeting-objectives.html" class="card bg-light h-100 text-decoration-none">
+                      <div class="card-body p-3 text-center">
+                        <div class="icon-circle bg-primary mx-auto mb-2">
+                          <i class="fas fa-bullseye text-white"></i>
+                        </div>
+                        <h6 class="mb-0 text-primary">Plan Meeting</h6>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <a href="src/pages/pdf-summarizer.html" class="card bg-light h-100 text-decoration-none">
+                      <div class="card-body p-3 text-center">
+                        <div class="icon-circle bg-info mx-auto mb-2">
+                          <i class="fas fa-file-alt text-white"></i>
+                        </div>
+                        <h6 class="mb-0 text-primary">Summarize PDF</h6>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <a href="src/pages/next-dialogue.html" class="card bg-light h-100 text-decoration-none">
+                      <div class="card-body p-3 text-center">
+                        <div class="icon-circle bg-success mx-auto mb-2">
+                          <i class="fas fa-comments text-white"></i>
+                        </div>
+                        <h6 class="mb-0 text-primary">Create Dialogue</h6>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <a href="src/pages/competitive-intel.html" class="card bg-light h-100 text-decoration-none">
+                      <div class="card-body p-3 text-center">
+                        <div class="icon-circle bg-danger mx-auto mb-2">
+                          <i class="fas fa-chart-line text-white"></i>
+                        </div>
+                        <h6 class="mb-0 text-primary">Market Intel</h6>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Custom JavaScript -->
+  <script src="src/index.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Toggle the side navigation
+      const sidebarToggle = document.getElementById('sidebarToggle');
+      
+      if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.body.classList.toggle('sb-sidenav-toggled');
+        });
+      }
+    });
+  </script>
+</body>
+</html> 
